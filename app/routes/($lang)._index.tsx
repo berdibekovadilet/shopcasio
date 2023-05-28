@@ -38,7 +38,7 @@ export async function loader({params, context}: LoaderArgs) {
     hero: CollectionHero;
     shop: HomeSeoData;
   }>(HOMEPAGE_SEO_QUERY, {
-    variables: {handle: 'freestyle'},
+    variables: {handle: 'g-shock'},
   });
 
   const seo = seoPayload.home();
