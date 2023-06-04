@@ -28,11 +28,12 @@ import {Suspense, useEffect, useMemo} from 'react';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 import type {LayoutData} from '../root';
+import {AnnouncementBar} from "~/components/AnnouncementBar";
 
 export function Layout({
-  children,
-  layout,
-}: {
+                         children,
+                         layout,
+                       }: {
   children: React.ReactNode;
   layout: LayoutData;
 }) {
@@ -52,12 +53,12 @@ export function Layout({
           {children}
         </main>
       </div>
-      <Footer menu={layout?.footerMenu} />
+      <Footer menu={layout?.footerMenu}/>
     </>
   );
 }
 
-function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
+function Header({title, menu}: { title: string; menu?: EnhancedMenu }) {
   const isHome = useIsHomePath();
 
   const {
@@ -82,9 +83,9 @@ function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
 
   return (
     <>
-      <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
+      <CartDrawer isOpen={isCartOpen} onClose={closeCart}/>
       {menu && (
-        <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu} />
+        <MenuDrawer isOpen={isMenuOpen} onClose={closeMenu} menu={menu}/>
       )}
       <DesktopHeader
         isHome={isHome}
@@ -102,15 +103,15 @@ function Header({title, menu}: {title: string; menu?: EnhancedMenu}) {
   );
 }
 
-function CartDrawer({isOpen, onClose}: {isOpen: boolean; onClose: () => void}) {
+function CartDrawer({isOpen, onClose}: { isOpen: boolean; onClose: () => void }) {
   const [root] = useMatches();
 
   return (
     <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
       <div className="grid">
-        <Suspense fallback={<CartLoading />}>
+        <Suspense fallback={<CartLoading/>}>
           <Await resolve={root.data?.cart}>
-            {(cart) => <Cart layout="drawer" onClose={onClose} cart={cart} />}
+            {(cart) => <Cart layout="drawer" onClose={onClose} cart={cart}/>}
           </Await>
         </Suspense>
       </div>
@@ -119,10 +120,10 @@ function CartDrawer({isOpen, onClose}: {isOpen: boolean; onClose: () => void}) {
 }
 
 export function MenuDrawer({
-  isOpen,
-  onClose,
-  menu,
-}: {
+                             isOpen,
+                             onClose,
+                             menu,
+                           }: {
   isOpen: boolean;
   onClose: () => void;
   menu: EnhancedMenu;
@@ -130,16 +131,16 @@ export function MenuDrawer({
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
-        <MenuMobileNav menu={menu} onClose={onClose} />
+        <MenuMobileNav menu={menu} onClose={onClose}/>
       </div>
     </Drawer>
   );
 }
 
 function MenuMobileNav({
-  menu,
-  onClose,
-}: {
+                         menu,
+                         onClose,
+                       }: {
   menu: EnhancedMenu;
   onClose: () => void;
 }) {
@@ -167,11 +168,11 @@ function MenuMobileNav({
 }
 
 function MobileHeader({
-  title,
-  isHome,
-  openCart,
-  openMenu,
-}: {
+                        title,
+                        isHome,
+                        openCart,
+                        openMenu,
+                      }: {
   title: string;
   isHome: boolean;
   openCart: () => void;
@@ -195,7 +196,7 @@ function MobileHeader({
           onClick={openMenu}
           className="relative flex items-center justify-center w-8 h-8"
         >
-          <IconMenu />
+          <IconMenu/>
         </button>
         <Form
           method="get"
@@ -206,7 +207,7 @@ function MobileHeader({
             type="submit"
             className="relative flex items-center justify-center w-8 h-8"
           >
-            <IconSearch />
+            <IconSearch/>
           </button>
           <Input
             className={
@@ -235,19 +236,19 @@ function MobileHeader({
       </Link>
 
       <div className="flex items-center justify-end w-full gap-4">
-        <AccountLink className="relative flex items-center justify-center w-8 h-8" />
-        <CartCount isHome={isHome} openCart={openCart} />
+        <AccountLink className="relative flex items-center justify-center w-8 h-8"/>
+        <CartCount isHome={isHome} openCart={openCart}/>
       </div>
     </header>
   );
 }
 
 function DesktopHeader({
-  isHome,
-  menu,
-  openCart,
-  title,
-}: {
+                         isHome,
+                         menu,
+                         openCart,
+                         title,
+                       }: {
   isHome: boolean;
   openCart: () => void;
   menu?: EnhancedMenu;
@@ -256,93 +257,96 @@ function DesktopHeader({
   const params = useParams();
   const {y} = useWindowScroll();
   return (
-    <header
-      role="banner"
-      className={`${
-        isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
-    >
-      <div className="flex gap-12">
-        <Link className="font-bold" to="/" prefetch="intent">
-          {title}
-        </Link>
-        <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link
-              key={item.id}
-              to={item.to}
-              target={item.target}
-              prefetch="intent"
-              className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-              }
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-      </div>
-      <div className="flex items-center gap-1">
-        <Form
-          method="get"
-          action={params.lang ? `/${params.lang}/search` : '/search'}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+    <>
+      <AnnouncementBar/>
+      <header
+        role="banner"
+        className={`${
+          isHome
+            ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
+            : 'bg-contrast/80 text-primary'
+        } ${
+          !isHome && y > 50 && ' shadow-lightHeader'
+        } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+      >
+        <div className="flex gap-12">
+          <Link className="font-bold" to="/" prefetch="intent">
+            {title}
+          </Link>
+          <nav className="flex gap-8">
+            {/* Top level menu items */}
+            {(menu?.items || []).map((item) => (
+              <Link
+                key={item.id}
+                to={item.to}
+                target={item.target}
+                prefetch="intent"
+                className={({isActive}) =>
+                  isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+                }
+              >
+                {item.title}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <div className="flex items-center gap-1">
+          <Form
+            method="get"
+            action={params.lang ? `/${params.lang}/search` : '/search'}
+            className="flex items-center gap-2"
           >
-            <IconSearch />
-          </button>
-        </Form>
-        <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" />
-        <CartCount isHome={isHome} openCart={openCart} />
-      </div>
-    </header>
+            <Input
+              className={
+                isHome
+                  ? 'focus:border-contrast/20 dark:focus:border-primary/20'
+                  : 'focus:border-primary/20'
+              }
+              type="search"
+              variant="minisearch"
+              placeholder="Search"
+              name="q"
+            />
+            <button
+              type="submit"
+              className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+            >
+              <IconSearch/>
+            </button>
+          </Form>
+          <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"/>
+          <CartCount isHome={isHome} openCart={openCart}/>
+        </div>
+      </header>
+    </>
   );
 }
 
-function AccountLink({className}: {className?: string}) {
+function AccountLink({className}: { className?: string }) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
     <Link to="/account" className={className}>
-      <IconAccount />
+      <IconAccount/>
     </Link>
   ) : (
     <Link to="/account/login" className={className}>
-      <IconLogin />
+      <IconLogin/>
     </Link>
   );
 }
 
 function CartCount({
-  isHome,
-  openCart,
-}: {
+                     isHome,
+                     openCart,
+                   }: {
   isHome: boolean;
   openCart: () => void;
 }) {
   const [root] = useMatches();
 
   return (
-    <Suspense fallback={<Badge count={0} dark={isHome} openCart={openCart} />}>
+    <Suspense fallback={<Badge count={0} dark={isHome} openCart={openCart}/>}>
       <Await resolve={root.data?.cart}>
         {(cart) => (
           <Badge
@@ -357,10 +361,10 @@ function CartCount({
 }
 
 function Badge({
-  openCart,
-  dark,
-  count,
-}: {
+                 openCart,
+                 dark,
+                 count,
+               }: {
   count: number;
   dark: boolean;
   openCart: () => void;
@@ -370,7 +374,7 @@ function Badge({
   const BadgeCounter = useMemo(
     () => (
       <>
-        <IconBag />
+        <IconBag/>
         <div
           className={`${
             dark
@@ -402,7 +406,7 @@ function Badge({
   );
 }
 
-function Footer({menu}: {menu?: EnhancedMenu}) {
+function Footer({menu}: { menu?: EnhancedMenu }) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -418,8 +422,8 @@ function Footer({menu}: {menu?: EnhancedMenu}) {
       className={`grid min-h-[25rem] items-start grid-flow-row w-full gap-6 py-8 px-6 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
         bg-primary dark:bg-contrast dark:text-primary text-contrast overflow-hidden`}
     >
-      <FooterMenu menu={menu} />
-      <CountrySelector />
+      <FooterMenu menu={menu}/>
+      <CountrySelector/>
       <div
         className={`self-end pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
       >
@@ -430,7 +434,7 @@ function Footer({menu}: {menu?: EnhancedMenu}) {
   );
 }
 
-const FooterLink = ({item}: {item: EnhancedMenuItem}) => {
+const FooterLink = ({item}: { item: EnhancedMenuItem }) => {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -446,7 +450,7 @@ const FooterLink = ({item}: {item: EnhancedMenuItem}) => {
   );
 };
 
-function FooterMenu({menu}: {menu?: EnhancedMenu}) {
+function FooterMenu({menu}: { menu?: EnhancedMenu }) {
   const styles = {
     section: 'grid gap-4',
     nav: 'grid gap-2 pb-6',
@@ -464,7 +468,7 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
                     {item.title}
                     {item?.items?.length > 0 && (
                       <span className="md:hidden">
-                        <IconCaret direction={open ? 'up' : 'down'} />
+                        <IconCaret direction={open ? 'up' : 'down'}/>
                       </span>
                     )}
                   </Heading>
@@ -479,7 +483,7 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
                       <Disclosure.Panel static>
                         <nav className={styles.nav}>
                           {item.items.map((subItem) => (
-                            <FooterLink key={subItem.id} item={subItem} />
+                            <FooterLink key={subItem.id} item={subItem}/>
                           ))}
                         </nav>
                       </Disclosure.Panel>
