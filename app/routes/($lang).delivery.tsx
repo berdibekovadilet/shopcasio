@@ -2,7 +2,7 @@ export default function DeliveryPage() {
   return (
     <>
       <div className='container mx-auto my-8'>
-        <h2 className='text-2xl text-center'>Доставка</h2>
+        <h2 className='text-center text-2xl mb-10 md:text-4xl md:mb-16 uppercase'>Доставка</h2>
         <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-6 dark:text-contrast'>
           <div className='mb-8'>
             <h3 className='text-lg font-bold'>Стоимость доставки</h3>
@@ -28,8 +28,8 @@ export default function DeliveryPage() {
           </div>
         </div>
       </div>
-      <div className='container mx-auto mt-8'>
-        <h2 className='text-2xl text-center'>Возврат и отмена</h2>
+      <div className='container mx-auto my-8'>
+        <h2 className='text-center text-2xl mb-10 mt-16 md:text-4xl md:mb-16 md:mt-20'>Возврат и отмена</h2>
         <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-4 dark:text-contrast'>
           <div className='mb-8'>
             <h3 className='text-lg font-bold'>Могу ли я вернуть или обменять товар?</h3>
@@ -50,8 +50,8 @@ export default function DeliveryPage() {
               </li>
             </ul>
             <h3 className='text-lg font-bold mt-8'>Могу ли я отменить свой заказ?</h3>
-            <p className='mt-3'>Если ваш заказ был отдан на доставку, пожалуйста позвоните по номеру +996 (551) 37-73-73,
-              и наши сотрудники помогут вам с процессом отмены заказа.
+            <p className='mt-3'>Если ваш заказ был отдан на доставку, пожалуйста свяжитесь с нашим менеджером
+              и он поможет вам с процессом отмены заказа.
             </p>
           </div>
         </div>

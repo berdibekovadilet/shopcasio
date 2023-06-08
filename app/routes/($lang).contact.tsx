@@ -1,7 +1,7 @@
 export default function ContactPage() {
   return (
     <div className='container mx-auto my-8'>
-      <h1 className='text-4xl text-center'>Контакты</h1>
+      <h1 className='text-center text-2xl mb-10 md:text-4xl md:mb-16 uppercase'>Контакты</h1>
       <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-6 dark:contrast dark:text-contrast'>
         <div className='mb-8'>
           <h3 className='text-lg font-bold'>Заказ или консультация в интернет-магазине</h3>

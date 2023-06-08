@@ -4,7 +4,7 @@ export default function WarrantyPage() {
   return (
     <div className='container mx-auto my-8'>
       <div className='my-4 mx-4 sm:mx-0'>
-        <h1 className='text-4xl text-center'>Гарантия</h1>
+        <h1 className='text-center text-2xl mb-10 md:text-4xl md:mb-16 uppercase'>Гарантия</h1>
         <h2 className='text-xl font-bold mt-6'>На сайте представлены только подлинные товары с оригинальной
           комплектацией,
           которые сопровождаются официальной гарантией от производителя.
