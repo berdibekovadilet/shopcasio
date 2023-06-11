@@ -11,7 +11,7 @@ export function MenuDrawer({
   menu: EnhancedMenu;
 }) {
   return (
-    <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
+    <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Меню">
       <div className="grid">
         <MenuMobileNav menu={menu} onClose={onClose}/>
       </div>

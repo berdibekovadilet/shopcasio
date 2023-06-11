@@ -1,14 +1,14 @@
 import {useWindowScroll} from "react-use";
 import {Form, useParams} from "@remix-run/react";
 import {IconSearch, Input, Link, AccountLink, CartCount} from "~/components";
-import {AnnouncementBar} from "~/components/AnnouncementBar";
 import {EnhancedMenu} from "~/lib/utils";
+import {TopMenu} from "~/widgets/header/TopMenu";
+import Logo from "~/assets/other/store_logo.png"
 
 export function DesktopHeader({
                                 isHome,
                                 menu,
                                 openCart,
-                                title,
                               }: {
   isHome: boolean;
   openCart: () => void;
@@ -19,20 +19,20 @@ export function DesktopHeader({
   const {y} = useWindowScroll();
   return (
     <>
-      <AnnouncementBar/>
+      <TopMenu/>
       <header
         role="banner"
         className={`${
           isHome
-            ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-            : 'bg-contrast/80 text-primary'
+            ? 'bg-white-200 text-primary shadow-darkHeader'
+            : 'bg-white text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
         } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
-        <div className="flex gap-12">
+        <div className="flex gap-12 items-center">
           <Link className="font-bold" to="/" prefetch="intent">
-            {title}
+            <img src={Logo} alt='store logo' className='h-12'/>
           </Link>
           <nav className="flex gap-8">
             {/* Top level menu items */}
@@ -65,7 +65,7 @@ export function DesktopHeader({
               }
               type="search"
               variant="minisearch"
-              placeholder="Search"
+              placeholder="Поиск"
               name="q"
             />
             <button
