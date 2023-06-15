@@ -12,13 +12,13 @@ import {getProductPlaceholder} from '~/lib/placeholders';
 import type {MoneyV2, Product} from '@shopify/hydrogen/storefront-api-types';
 
 export function ProductCard({
-  product,
-  label,
-  className,
-  loading,
-  onClick,
-  quickAdd,
-}: {
+                              product,
+                              label,
+                              className,
+                              loading,
+                              onClick,
+                              quickAdd,
+                            }: {
   product: Product;
   label?: string;
   className?: string;
@@ -92,7 +92,9 @@ export function ProductCard({
             </Text>
             <div className="flex gap-4">
               <Text className="flex gap-4">
-                <Money withoutTrailingZeros data={price!} />
+                <div className='flex font-bold'>
+                  <Money withoutTrailingZeros withoutCurrency data={price!}/> сом
+                </div>
                 {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
                     className={'opacity-50'}
@@ -129,9 +131,9 @@ export function ProductCard({
 }
 
 function CompareAtPrice({
-  data,
-  className,
-}: {
+                          data,
+                          className,
+                        }: {
   data: MoneyV2;
   className?: string;
 }) {

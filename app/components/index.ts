@@ -25,6 +25,11 @@ export {Pagination, getPaginationVariables, usePagination} from './Pagination';
 export {AddToCartButton} from './AddToCartButton';
 export {AccountLink} from './AccountLink';
 export {CartCount} from './CartCount';
+export {ProductGridMatrix} from "./ProductGridMatrix"
+export {Accordion} from "./Accordion"
+export {BigBanner} from "./BigBanner"
+export {SmallBanner} from "./SmallBanner"
+export {CompanyHighlights} from "./CompanyHighlights"
 
 // Sue me
 export * from './Icon';

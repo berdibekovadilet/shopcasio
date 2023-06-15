@@ -1,7 +1,15 @@
 import {defer, type LoaderArgs} from '@shopify/remix-oxygen';
 import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
-import {ProductSwimlane, FeaturedCollections, Hero} from '~/components';
+import {
+  ProductSwimlane,
+  FeaturedCollections,
+  Hero,
+  ProductGridMatrix,
+  BigBanner,
+  SmallBanner,
+  CompanyHighlights
+} from '~/components';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
@@ -12,9 +20,6 @@ import type {
 import {AnalyticsPageType} from '@shopify/hydrogen';
 import {routeHeaders, CACHE_SHORT} from '~/data/cache';
 import {type CollectionHero} from '~/components/Hero';
-import {BigBanner} from "~/components/BigBanner";
-import {SmallBanner} from "~/components/SmallBanner";
-import {CompanyHighlights} from "~/components/CompanyHighlights";
 
 interface HomeSeoData {
   shop: {
@@ -143,6 +148,44 @@ export default function Homepage() {
             {({products}) => {
               if (!products?.nodes) return <></>;
               return (
+                <ProductGridMatrix
+                  products={products.nodes}
+                  title="Новинки"
+                  count={10}
+                />
+              );
+            }}
+          </Await>
+        </Suspense>
+      )}
+      <div>
+        <CompanyHighlights/>
+      </div>
+      <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
+        <BigBanner {...primaryHero} top loading="eager"/>
+        <div>
+          <Await resolve={secondaryHero}>
+            {({hero}) => {
+              if (!hero) return <></>;
+              return <SmallBanner {...hero} />;
+            }}
+          </Await>
+          <Await resolve={tertiaryHero}>
+            {({hero}) => {
+              if (!hero) return <></>;
+              return <SmallBanner {...hero} />;
+            }}
+          </Await>
+        </div>
+      </div>
+
+
+      {featuredProducts && (
+        <Suspense>
+          <Await resolve={featuredProducts}>
+            {({products}) => {
+              if (!products?.nodes) return <></>;
+              return (
                 <ProductSwimlane
                   products={products.nodes}
                   title="Популярные товары"
@@ -153,12 +196,10 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-      <div>
-        <CompanyHighlights/>
-      </div>
-      {secondaryHero && (
+
+      {tertiaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
-          <Await resolve={secondaryHero}>
+          <Await resolve={tertiaryHero}>
             {({hero}) => {
               if (!hero) return <></>;
               return <Hero {...hero} />;
@@ -178,17 +219,6 @@ export default function Homepage() {
                   title="ВЫБЕРИТЕ ВАШИ ЧАСЫ"
                 />
               );
-            }}
-          </Await>
-        </Suspense>
-      )}
-
-      {tertiaryHero && (
-        <Suspense fallback={<Hero {...skeletons[2]} />}>
-          <Await resolve={tertiaryHero}>
-            {({hero}) => {
-              if (!hero) return <></>;
-              return <Hero {...hero} />;
             }}
           </Await>
         </Suspense>

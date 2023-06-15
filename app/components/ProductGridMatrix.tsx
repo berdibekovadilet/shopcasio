@@ -3,10 +3,10 @@ import {ProductCard, Section} from '~/components';
 
 const mockProducts = new Array(12).fill('');
 
-export function ProductSwimlane({
+export function ProductGridMatrix({
   title = 'Популярные товары',
   products = mockProducts,
-  count = 12,
+  count = 10,
   ...props
 }: {
   title?: string;
@@ -15,7 +15,7 @@ export function ProductSwimlane({
 }) {
   return (
     <Section heading={title} padding="y" {...props}>
-      <div className="swimlane hiddenScroll gap-8 md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12">
+      <div className="flex flex-wrap gap-8 md:pb-8 md:px-8 lg:px-12">
         {products.map((product) => (
           <ProductCard
             product={product}
