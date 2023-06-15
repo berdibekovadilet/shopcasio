@@ -4,7 +4,7 @@ import {ProductCard, Section} from '~/components';
 const mockProducts = new Array(12).fill('');
 
 export function ProductSwimlane({
-  title = 'Featured Products',
+  title = 'Популярные товары',
   products = mockProducts,
   count = 12,
   ...props
@@ -20,7 +20,7 @@ export function ProductSwimlane({
           <ProductCard
             product={product}
             key={product.id}
-            className="snap-start w-80"
+            className="snap-start w-60"
           />
         ))}
       </div>

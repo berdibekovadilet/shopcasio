@@ -1,5 +1,3 @@
-import ServiceImg from "~/assets/pages/service.webp"
-
 export default function BlogPage() {
   return (
     <div className='container mx-auto my-8'>
@@ -13,3 +11,4 @@ export default function BlogPage() {
     </div>
   );
 };
+

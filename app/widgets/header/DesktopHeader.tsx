@@ -24,17 +24,17 @@ export function DesktopHeader({
         role="banner"
         className={`${
           isHome
-            ? 'bg-white-200 text-primary shadow-darkHeader'
+            ? 'bg-white-200 text-primary'
             : 'bg-white text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
         } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
         <div className="flex gap-12 items-center">
-          <Link className="font-bold" to="/" prefetch="intent">
+          <Link to="/" prefetch="intent">
             <img src={Logo} alt='store logo' className='h-12'/>
           </Link>
-          <nav className="flex gap-8">
+          <nav className="flex gap-8 text-sm break-normal">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
               <Link
@@ -43,7 +43,7 @@ export function DesktopHeader({
                 target={item.target}
                 prefetch="intent"
                 className={({isActive}) =>
-                  isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+                  isActive ? 'pb-1 border-b -mb-px' : 'pb-1 transition-all duration-[0.2s] ease-[ease] hover:scale-[1.1]'
                 }
               >
                 {item.title}

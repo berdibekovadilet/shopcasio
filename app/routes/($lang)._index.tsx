@@ -12,6 +12,8 @@ import type {
 import {AnalyticsPageType} from '@shopify/hydrogen';
 import {routeHeaders, CACHE_SHORT} from '~/data/cache';
 import {type CollectionHero} from '~/components/Hero';
+import {BigBanner} from "~/components/BigBanner";
+import {SmallBanner} from "~/components/SmallBanner";
 
 interface HomeSeoData {
   shop: {
@@ -62,11 +64,11 @@ export async function loader({params, context}: LoaderArgs) {
           language,
         },
       }),
-      secondaryHero: context.storefront.query<{hero: CollectionHero}>(
+      secondaryHero: context.storefront.query<{ hero: CollectionHero }>(
         COLLECTION_HERO_QUERY,
         {
           variables: {
-            handle: 'backcountry',
+            handle: 'baby-g',
             country,
             language,
           },
@@ -80,11 +82,11 @@ export async function loader({params, context}: LoaderArgs) {
           language,
         },
       }),
-      tertiaryHero: context.storefront.query<{hero: CollectionHero}>(
+      tertiaryHero: context.storefront.query<{ hero: CollectionHero }>(
         COLLECTION_HERO_QUERY,
         {
           variables: {
-            handle: 'winter-2022',
+            handle: 'edifice',
             country,
             language,
           },
@@ -117,10 +119,23 @@ export default function Homepage() {
 
   return (
     <>
-      {primaryHero && (
-        <Hero {...primaryHero} height="full" top loading="eager" />
-      )}
-
+        <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
+          <BigBanner {...primaryHero} top loading="eager"/>
+          <div>
+            <Await resolve={secondaryHero}>
+              {({hero}) => {
+                if (!hero) return <></>;
+                return <SmallBanner {...hero} />;
+              }}
+            </Await>
+            <Await resolve={tertiaryHero}>
+              {({hero}) => {
+                if (!hero) return <></>;
+                return <SmallBanner {...hero} />;
+              }}
+            </Await>
+          </div>
+        </div>
       {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
@@ -129,7 +144,7 @@ export default function Homepage() {
               return (
                 <ProductSwimlane
                   products={products.nodes}
-                  title="Featured Products"
+                  title="Популярные товары"
                   count={4}
                 />
               );
@@ -143,7 +158,7 @@ export default function Homepage() {
           <Await resolve={secondaryHero}>
             {({hero}) => {
               if (!hero) return <></>;
-              return <Hero {...hero} />;
+              return <BigBanner {...hero} />;
             }}
           </Await>
         </Suspense>
@@ -157,7 +172,7 @@ export default function Homepage() {
               return (
                 <FeaturedCollections
                   collections={collections.nodes}
-                  title="Collections"
+                  title="ВЫБЕРИТЕ ВАШИ ЧАСЫ"
                 />
               );
             }}
@@ -180,90 +195,90 @@ export default function Homepage() {
 }
 
 const COLLECTION_CONTENT_FRAGMENT = `#graphql
-  ${MEDIA_FRAGMENT}
-  fragment CollectionContent on Collection {
-    id
-    handle
-    title
-    descriptionHtml
-    heading: metafield(namespace: "hero", key: "title") {
+      ${MEDIA_FRAGMENT}
+      fragment CollectionContent on Collection {
+      id
+      handle
+      title
+      descriptionHtml
+      heading: metafield(namespace: "hero", key: "title") {
       value
     }
-    byline: metafield(namespace: "hero", key: "byline") {
+      byline: metafield(namespace: "hero", key: "byline") {
       value
     }
-    cta: metafield(namespace: "hero", key: "cta") {
+      cta: metafield(namespace: "hero", key: "cta") {
       value
     }
-    spread: metafield(namespace: "hero", key: "spread") {
+      spread: metafield(namespace: "hero", key: "spread") {
       reference {
-        ...Media
-      }
+      ...Media
     }
-    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {
+    }
+      spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {
       reference {
-        ...Media
-      }
+      ...Media
     }
-  }
-`;
+    }
+    }
+      `;
 
 const HOMEPAGE_SEO_QUERY = `#graphql
-  ${COLLECTION_CONTENT_FRAGMENT}
-  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
+      ${COLLECTION_CONTENT_FRAGMENT}
+      query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
+      @inContext(country: $country, language: $language) {
+      hero: collection(handle: $handle) {
       ...CollectionContent
     }
-    shop {
+      shop {
       name
       description
     }
-  }
-`;
+    }
+      `;
 
 const COLLECTION_HERO_QUERY = `#graphql
-  ${COLLECTION_CONTENT_FRAGMENT}
-  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
+      ${COLLECTION_CONTENT_FRAGMENT}
+      query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
+      @inContext(country: $country, language: $language) {
+      hero: collection(handle: $handle) {
       ...CollectionContent
     }
-  }
-`;
+    }
+      `;
 
 // @see: https://shopify.dev/api/storefront/2023-04/queries/products
 export const HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
-  ${PRODUCT_CARD_FRAGMENT}
-  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    products(first: 8) {
+      ${PRODUCT_CARD_FRAGMENT}
+      query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
+      @inContext(country: $country, language: $language) {
+      products(first: 8) {
       nodes {
-        ...ProductCard
-      }
+      ...ProductCard
     }
-  }
-`;
+    }
+    }
+      `;
 
 // @see: https://shopify.dev/api/storefront/2023-04/queries/collections
 export const FEATURED_COLLECTIONS_QUERY = `#graphql
-  query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    collections(
-      first: 4,
+      query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
+      @inContext(country: $country, language: $language) {
+      collections(
+        first: 7,
       sortKey: UPDATED_AT
-    ) {
+      ) {
       nodes {
-        id
-        title
-        handle
-        image {
-          altText
-          width
-          height
-          url
-        }
-      }
+      id
+      title
+      handle
+      image {
+      altText
+      width
+      height
+      url
     }
-  }
-`;
+    }
+    }
+    }
+      `;

@@ -62,7 +62,7 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
 
       <p className='self-end pt-8 opacity-50 md:col-span-2'
       >
-        &copy; 2015 - {new Date().getFullYear()}, SHOPCASION BSTARCO / Все права защищены.
+        &copy; 2015 - {new Date().getFullYear()}, SHOPCASIO BSTARCO / Все права защищены.
       </p>
     </Section>
   );
