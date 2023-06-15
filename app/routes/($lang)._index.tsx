@@ -14,6 +14,7 @@ import {routeHeaders, CACHE_SHORT} from '~/data/cache';
 import {type CollectionHero} from '~/components/Hero';
 import {BigBanner} from "~/components/BigBanner";
 import {SmallBanner} from "~/components/SmallBanner";
+import {CompanyHighlights} from "~/components/CompanyHighlights";
 
 interface HomeSeoData {
   shop: {
@@ -119,23 +120,23 @@ export default function Homepage() {
 
   return (
     <>
-        <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
-          <BigBanner {...primaryHero} top loading="eager"/>
-          <div>
-            <Await resolve={secondaryHero}>
-              {({hero}) => {
-                if (!hero) return <></>;
-                return <SmallBanner {...hero} />;
-              }}
-            </Await>
-            <Await resolve={tertiaryHero}>
-              {({hero}) => {
-                if (!hero) return <></>;
-                return <SmallBanner {...hero} />;
-              }}
-            </Await>
-          </div>
+      <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
+        <BigBanner {...primaryHero} top loading="eager"/>
+        <div>
+          <Await resolve={secondaryHero}>
+            {({hero}) => {
+              if (!hero) return <></>;
+              return <SmallBanner {...hero} />;
+            }}
+          </Await>
+          <Await resolve={tertiaryHero}>
+            {({hero}) => {
+              if (!hero) return <></>;
+              return <SmallBanner {...hero} />;
+            }}
+          </Await>
         </div>
+      </div>
       {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
@@ -152,13 +153,15 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-
+      <div>
+        <CompanyHighlights/>
+      </div>
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
           <Await resolve={secondaryHero}>
             {({hero}) => {
               if (!hero) return <></>;
-              return <BigBanner {...hero} />;
+              return <Hero {...hero} />;
             }}
           </Await>
         </Suspense>
