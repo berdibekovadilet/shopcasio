@@ -6,7 +6,7 @@ export function CartDrawer({isOpen, onClose}: { isOpen: boolean; onClose: () => 
   const [root] = useMatches();
 
   return (
-    <Drawer open={isOpen} onClose={onClose} heading="Cart" openFrom="right">
+    <Drawer open={isOpen} onClose={onClose} heading="Корзина" openFrom="right">
       <div className="grid">
         <Suspense fallback={<CartLoading/>}>
           <Await resolve={root.data?.cart}>

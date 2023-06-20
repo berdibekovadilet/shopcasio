@@ -87,7 +87,7 @@ export default function Collections() {
                       nodes,
                     }}
                   >
-                    {isLoading ? 'Loading...' : 'Previous products'}
+                    {isLoading ? 'Загрузка...' : 'Предыдущие модели'}
                   </Button>
                 </div>
               )}
@@ -121,7 +121,7 @@ export default function Collections() {
                       nodes,
                     }}
                   >
-                    {isLoading ? 'Loading...' : 'Next products'}
+                    {isLoading ? 'Загрузка...' : 'Следующие модели'}
                   </Button>
                 </div>
               )}

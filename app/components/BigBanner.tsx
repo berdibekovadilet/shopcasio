@@ -39,7 +39,7 @@ export function BigBanner({
     <Link to={`/collections/${handle}`}>
       <div className='relative flex flex-col justify-between'>
         {spread?.reference && (
-          <div className='relative overflow-hidden inline-block min-w-[700px] h-[531px] transition-all duration-[0.2s] ease-[ease] mb-6 hover:scale-[1.02] rounded-[20px]'>
+          <div className='relative overflow-hidden inline-block md:min-w-[700px] h-[531px] transition-all duration-[0.2s] ease-[ease] mb-6 hover:scale-[1.02] rounded-[20px]'>
             <SpreadMedia
               sizes={
                 spreadSecondary?.reference

@@ -3,12 +3,12 @@ import {FeaturedSection} from './FeaturedSection';
 import {PageHeader, Text} from './Text';
 
 export function GenericError({
-  error,
-}: {
-  error?: {message: string; stack?: string};
+                               error,
+                             }: {
+  error?: { message: string; stack?: string };
 }) {
-  const heading = `Something’s wrong here.`;
-  let description = `We found an error while loading this page.`;
+  const heading = `Что-то не так.`;
+  let description = `Мы обнаружили ошибку при загрузке этой страницы.`;
 
   // TODO hide error in prod?
   if (error) {
@@ -38,10 +38,10 @@ export function GenericError({
           />
         )}
         <Button width="auto" variant="secondary" to={'/'}>
-          Take me to the home page
+          На главную страницу
         </Button>
       </PageHeader>
-      <FeaturedSection />
+      <FeaturedSection/>
     </>
   );
 }

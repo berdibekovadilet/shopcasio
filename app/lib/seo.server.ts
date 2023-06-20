@@ -30,7 +30,7 @@ function root({
 }): SeoConfig<Organization> {
   return {
     title: shop?.name,
-    titleTemplate: '%s | Hydrogen Demo Store',
+    titleTemplate: '%s | Магазин часов Casio',
     description: truncate(shop?.description ?? ''),
     handle: '@shopify',
     url,
@@ -62,9 +62,9 @@ function root({
 
 function home(): SeoConfig<WebPage> {
   return {
-    title: 'Home',
-    titleTemplate: '%s | Hydrogen Demo Store',
-    description: 'The best place to buy snowboarding products',
+    title: 'Главная',
+    titleTemplate: '%s | Магазин часов Casio',
+    description: 'Оригинальные часы Casio с фото, описанием и указанием цены',
     robots: {
       noIndex: false,
       noFollow: false,
@@ -228,7 +228,7 @@ function collection({
     description: truncate(
       collection?.seo?.description ?? collection?.description ?? '',
     ),
-    titleTemplate: '%s | Collection',
+    titleTemplate: '%s | Каталог',
     media: {
       type: 'image',
       url: collection?.image?.url,
@@ -260,8 +260,8 @@ function collectionsJsonLd({
   return {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Collections',
-    description: 'All collections',
+    name: 'Бренды',
+    description: 'Все бренды',
     url,
     mainEntity: {
       '@type': 'ItemList',
@@ -278,9 +278,9 @@ function listCollections({
   url: Request['url'];
 }): SeoConfig<CollectionPage> {
   return {
-    title: 'Collections',
-    titleTemplate: '%s | Collections',
-    description: 'All hydrogen collections',
+    title: 'Бренды',
+    titleTemplate: '%s | Бренды',
+    description: 'Все бренды часов Casio',
     url,
     jsonLd: collectionsJsonLd({collections, url}),
   };

@@ -1,7 +1,7 @@
 import type {Product} from '@shopify/hydrogen/storefront-api-types';
 import {ProductCard, Section} from '~/components';
 
-const mockProducts = new Array(12).fill('');
+const mockProducts = new Array(10).fill('');
 
 export function ProductGridMatrix({
   title = 'Популярные товары',
@@ -15,7 +15,7 @@ export function ProductGridMatrix({
 }) {
   return (
     <Section heading={title} padding="y" {...props}>
-      <div className="flex flex-wrap gap-8 md:pb-8 md:px-8 lg:px-12">
+      <div className="swimlane hiddenScroll md:flex md:flex-wrap gap-8 pb-8 px-8 lg:px-12">
         {products.map((product) => (
           <ProductCard
             product={product}

@@ -23,10 +23,10 @@ import {CartAction} from '~/lib/type';
 type Layouts = 'page' | 'drawer';
 
 export function Cart({
-  layout,
-  onClose,
-  cart,
-}: {
+                       layout,
+                       onClose,
+                       cart,
+                     }: {
   layout: Layouts;
   onClose?: () => void;
   cart: CartType | null;
@@ -35,16 +35,16 @@ export function Cart({
 
   return (
     <>
-      <CartEmpty hidden={linesCount} onClose={onClose} layout={layout} />
-      <CartDetails cart={cart} layout={layout} />
+      <CartEmpty hidden={linesCount} onClose={onClose} layout={layout}/>
+      <CartDetails cart={cart} layout={layout}/>
     </>
   );
 }
 
 export function CartDetails({
-  layout,
-  cart,
-}: {
+                              layout,
+                              cart,
+                            }: {
   layout: Layouts;
   cart: CartType | null;
 }) {
@@ -57,11 +57,11 @@ export function CartDetails({
 
   return (
     <div className={container[layout]}>
-      <CartLines lines={cart?.lines} layout={layout} />
+      <CartLines lines={cart?.lines} layout={layout}/>
       {cartHasItems && (
         <CartSummary cost={cart.cost} layout={layout}>
-          <CartDiscounts discountCodes={cart.discountCodes} />
-          <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
+          <CartDiscounts discountCodes={cart.discountCodes}/>
+          <CartCheckoutActions checkoutUrl={cart.checkoutUrl}/>
         </CartSummary>
       )}
     </div>
@@ -74,8 +74,8 @@ export function CartDetails({
  * @todo rework when a design is ready
  */
 function CartDiscounts({
-  discountCodes,
-}: {
+                         discountCodes,
+                       }: {
   discountCodes: CartType['discountCodes'];
 }) {
   const codes = discountCodes?.map(({code}) => code).join(', ') || null;
@@ -85,7 +85,7 @@ function CartDiscounts({
       {/* Have existing discount, display it with a remove option */}
       <dl className={codes ? 'grid' : 'hidden'}>
         <div className="flex items-center justify-between font-medium">
-          <Text as="dt">Discount(s)</Text>
+          <Text as="dt">Скидки</Text>
           <div className="flex items-center justify-between">
             <UpdateDiscountForm>
               <button>
@@ -112,10 +112,10 @@ function CartDiscounts({
             className={getInputStyleClasses()}
             type="text"
             name="discountCode"
-            placeholder="Discount code"
+            placeholder="Скидочный код"
           />
           <button className="flex justify-end font-medium whitespace-nowrap">
-            Apply Discount
+            Применить скидку
           </button>
         </div>
       </UpdateDiscountForm>
@@ -123,7 +123,7 @@ function CartDiscounts({
   );
 }
 
-function UpdateDiscountForm({children}: {children: React.ReactNode}) {
+function UpdateDiscountForm({children}: { children: React.ReactNode }) {
   const fetcher = useFetcher();
   return (
     <fetcher.Form action="/cart" method="post">
@@ -138,9 +138,9 @@ function UpdateDiscountForm({children}: {children: React.ReactNode}) {
 }
 
 function CartLines({
-  layout = 'drawer',
-  lines: cartLines,
-}: {
+                     layout = 'drawer',
+                     lines: cartLines,
+                   }: {
   layout: Layouts;
   lines: CartType['lines'] | undefined;
 }) {
@@ -163,21 +163,21 @@ function CartLines({
     >
       <ul className="grid gap-6 md:gap-10">
         {currentLines.map((line) => (
-          <CartLineItem key={line.id} line={line as CartLine} />
+          <CartLineItem key={line.id} line={line as CartLine}/>
         ))}
       </ul>
     </section>
   );
 }
 
-function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
+function CartCheckoutActions({checkoutUrl}: { checkoutUrl: string }) {
   if (!checkoutUrl) return null;
 
   return (
     <div className="flex flex-col mt-2">
       <a href={checkoutUrl} target="_self">
         <Button as="span" width="full">
-          Continue to Checkout
+          Продолжить оформление заказа
         </Button>
       </a>
       {/* @todo: <CartShopPayButton cart={cart} /> */}
@@ -186,10 +186,10 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl: string}) {
 }
 
 function CartSummary({
-  cost,
-  layout,
-  children = null,
-}: {
+                       cost,
+                       layout,
+                       children = null,
+                     }: {
   children?: React.ReactNode;
   cost: CartCost;
   layout: Layouts;
@@ -206,10 +206,13 @@ function CartSummary({
       </h2>
       <dl className="grid">
         <div className="flex items-center justify-between font-medium">
-          <Text as="dt">Subtotal</Text>
+          <Text as="dt">Итого</Text>
           <Text as="dd" data-test="subtotal">
             {cost?.subtotalAmount?.amount ? (
-              <Money data={cost?.subtotalAmount} />
+              <>
+                <Money data={cost?.subtotalAmount} withoutCurrency withoutTrailingZeros/>
+                сом
+              </>
             ) : (
               '-'
             )}
@@ -221,7 +224,7 @@ function CartSummary({
   );
 }
 
-function CartLineItem({line}: {line: CartLine}) {
+function CartLineItem({line}: { line: CartLine }) {
   if (!line?.id) return null;
 
   const {id, quantity, merchandise} = line;
@@ -264,20 +267,20 @@ function CartLineItem({line}: {line: CartLine}) {
 
           <div className="flex items-center gap-2">
             <div className="flex justify-start text-copy">
-              <CartLineQuantityAdjust line={line} />
+              <CartLineQuantityAdjust line={line}/>
             </div>
-            <ItemRemoveButton lineIds={[id]} />
+            <ItemRemoveButton lineIds={[id]}/>
           </div>
         </div>
         <Text>
-          <CartLinePrice line={line} as="span" />
+          <CartLinePrice line={line} as="span"/>
         </Text>
       </div>
     </li>
   );
 }
 
-function ItemRemoveButton({lineIds}: {lineIds: CartLine['id'][]}) {
+function ItemRemoveButton({lineIds}: { lineIds: CartLine['id'][] }) {
   const fetcher = useFetcher();
 
   return (
@@ -287,19 +290,19 @@ function ItemRemoveButton({lineIds}: {lineIds: CartLine['id'][]}) {
         name="cartAction"
         value={CartAction.REMOVE_FROM_CART}
       />
-      <input type="hidden" name="linesIds" value={JSON.stringify(lineIds)} />
+      <input type="hidden" name="linesIds" value={JSON.stringify(lineIds)}/>
       <button
         className="flex items-center justify-center w-10 h-10 border rounded"
         type="submit"
       >
-        <span className="sr-only">Remove</span>
-        <IconRemove aria-hidden="true" />
+        <span className="sr-only">Удалить</span>
+        <IconRemove aria-hidden="true"/>
       </button>
     </fetcher.Form>
   );
 }
 
-function CartLineQuantityAdjust({line}: {line: CartLine}) {
+function CartLineQuantityAdjust({line}: { line: CartLine }) {
   if (!line || typeof line?.quantity === 'undefined') return null;
   const {id: lineId, quantity} = line;
   const prevQuantity = Number(Math.max(0, quantity - 1).toFixed(0));
@@ -308,7 +311,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
   return (
     <>
       <label htmlFor={`quantity-${lineId}`} className="sr-only">
-        Quantity, {quantity}
+        Количество, {quantity}
       </label>
       <div className="flex items-center border rounded">
         <UpdateCartButton lines={[{id: lineId, quantity: prevQuantity}]}>
@@ -343,9 +346,9 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
 }
 
 function UpdateCartButton({
-  children,
-  lines,
-}: {
+                            children,
+                            lines,
+                          }: {
   children: React.ReactNode;
   lines: CartLineUpdateInput[];
 }) {
@@ -353,18 +356,18 @@ function UpdateCartButton({
 
   return (
     <fetcher.Form action="/cart" method="post">
-      <input type="hidden" name="cartAction" value={CartAction.UPDATE_CART} />
-      <input type="hidden" name="lines" value={JSON.stringify(lines)} />
+      <input type="hidden" name="cartAction" value={CartAction.UPDATE_CART}/>
+      <input type="hidden" name="lines" value={JSON.stringify(lines)}/>
       {children}
     </fetcher.Form>
   );
 }
 
 function CartLinePrice({
-  line,
-  priceType = 'regular',
-  ...passthroughProps
-}: {
+                         line,
+                         priceType = 'regular',
+                         ...passthroughProps
+                       }: {
   line: CartLine;
   priceType?: 'regular' | 'compareAt';
   [key: string]: any;
@@ -380,14 +383,14 @@ function CartLinePrice({
     return null;
   }
 
-  return <Money withoutTrailingZeros {...passthroughProps} data={moneyV2} />;
+  return (<div><Money withoutTrailingZeros {...passthroughProps} data={moneyV2} withoutCurrency/> сом </div>)
 }
 
 export function CartEmpty({
-  hidden = false,
-  layout = 'drawer',
-  onClose,
-}: {
+                            hidden = false,
+                            layout = 'drawer',
+                            onClose,
+                          }: {
   hidden: boolean;
   layout?: Layouts;
   onClose?: () => void;
@@ -410,17 +413,16 @@ export function CartEmpty({
     <div ref={scrollRef} className={container[layout]} hidden={hidden}>
       <section className="grid gap-6">
         <Text format>
-          Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
-          started!
+          Похоже, вы еще ничего не добавили, давайте начнем!
         </Text>
         <div>
-          <Button onClick={onClose}>Continue shopping</Button>
+          <Button onClick={onClose}>Продолжить покупки</Button>
         </div>
       </section>
       <section className="grid gap-8 pt-16">
         <FeaturedProducts
           count={4}
-          heading="Shop Best Sellers"
+          heading="Вам может понравиться"
           layout={layout}
           onClose={onClose}
           sortKey="BEST_SELLING"

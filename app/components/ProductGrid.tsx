@@ -52,9 +52,9 @@ export function ProductGrid({
   if (!haveProducts) {
     return (
       <>
-        <p>No products found on this collection</p>
+        <p>В этой коллекции не найдено товаров</p>
         <Link to="/products">
-          <p className="underline">Browse catalog</p>
+          <p className="underline">Посмотреть каталог</p>
         </Link>
       </>
     );
@@ -68,6 +68,7 @@ export function ProductGrid({
             key={product.id}
             product={product}
             loading={getImageLoadingPriority(i)}
+            quickAdd={true}
           />
         ))}
       </Grid>
@@ -81,7 +82,7 @@ export function ProductGrid({
             width="full"
             prefetch="intent"
           >
-            {fetcher.state !== 'idle' ? 'Loading...' : 'Load more products'}
+            {fetcher.state !== 'idle' ? 'Загрузка...' : 'Загрузить больше товаров'}
           </Button>
         </div>
       )}

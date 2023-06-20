@@ -59,7 +59,7 @@ export async function loader({params, request, context}: LoaderArgs) {
   });
 
   const {shop, product} = await context.storefront.query<{
-    product: ProductType & {selectedVariant?: ProductVariant};
+    product: ProductType & { selectedVariant?: ProductVariant };
     shop: Shop;
   }>(PRODUCT_QUERY, {
     variables: {
@@ -128,7 +128,8 @@ export default function Product() {
             media={media.nodes}
             className="w-full lg:col-span-2"
           />
-          <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
+          <div
+            className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll">
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
                 <Heading as="h1" className="whitespace-normal">
@@ -138,24 +139,24 @@ export default function Product() {
                   <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                 )}
               </div>
-              <ProductForm />
+              <ProductForm/>
               <div className="grid gap-4 py-4">
                 {descriptionHtml && (
                   <ProductDetail
-                    title="Product Details"
+                    title="Короткое описание"
                     content={descriptionHtml}
                   />
                 )}
                 {shippingPolicy?.body && (
                   <ProductDetail
-                    title="Shipping"
+                    title="Доставка"
                     content={getExcerpt(shippingPolicy.body)}
                     learnMore={`/policies/${shippingPolicy.handle}`}
                   />
                 )}
                 {refundPolicy?.body && (
                   <ProductDetail
-                    title="Returns"
+                    title="Возврат"
                     content={getExcerpt(refundPolicy.body)}
                     learnMore={`/policies/${refundPolicy.handle}`}
                   />
@@ -165,18 +166,19 @@ export default function Product() {
           </div>
         </div>
       </Section>
-      <Suspense fallback={<Skeleton className="h-32" />}>
+      <Suspense fallback={<Skeleton className="h-32"/>}>
         <Await
-          errorElement="There was a problem loading related products"
+          errorElement="Возникла проблема при загрузке похожих товаров"
           resolve={recommended}
         >
           {(products) => (
-            <ProductSwimlane title="Related Products" products={products} />
+            <ProductSwimlane title="Похожие товары" products={products}/>
           )}
         </Await>
       </Suspense>
     </>
-  );
+  )
+    ;
 }
 
 export function ProductForm() {
@@ -245,7 +247,7 @@ export function ProductForm() {
           <div className="grid items-stretch gap-4">
             {isOutOfStock ? (
               <Button variant="secondary" disabled>
-                <Text>Sold out</Text>
+                <Text>Распродано</Text>
               </Button>
             ) : (
               <AddToCartButton
@@ -266,20 +268,24 @@ export function ProductForm() {
                   as="span"
                   className="flex items-center justify-center gap-2"
                 >
-                  <span>Add to Bag</span> <span>·</span>{' '}
+                  <span>Добавить в корзину</span> <span>·</span>{' '}
                   <Money
                     withoutTrailingZeros
+                    withoutCurrency
                     data={selectedVariant?.price!}
                     as="span"
                   />
+                  сом
                   {isOnSale && (
                     <Money
                       withoutTrailingZeros
+                      withoutCurrency
                       data={selectedVariant?.compareAtPrice!}
                       as="span"
                       className="opacity-50 strike"
                     />
-                  )}
+                    сом
+                    )}
                 </Text>
               </AddToCartButton>
             )}
@@ -298,9 +304,9 @@ export function ProductForm() {
 }
 
 function ProductOptions({
-  options,
-  searchParamsWithDefaults,
-}: {
+                          options,
+                          searchParamsWithDefaults,
+                        }: {
   options: ProductType['options'];
   searchParamsWithDefaults: URLSearchParams;
 }) {
@@ -343,7 +349,7 @@ function ProductOptions({
                           <span>
                             {searchParamsWithDefaults.get(option.name)}
                           </span>
-                          <IconCaret direction={open ? 'up' : 'down'} />
+                          <IconCaret direction={open ? 'up' : 'down'}/>
                         </Listbox.Button>
                         <Listbox.Options
                           className={clsx(
@@ -373,10 +379,10 @@ function ProductOptions({
                                   {value}
                                   {searchParamsWithDefaults.get(option.name) ===
                                     value && (
-                                    <span className="ml-2">
-                                      <IconCheck />
+                                      <span className="ml-2">
+                                      <IconCheck/>
                                     </span>
-                                  )}
+                                    )}
                                 </ProductOptionLink>
                               )}
                             </Listbox.Option>
@@ -417,12 +423,12 @@ function ProductOptions({
 }
 
 function ProductOptionLink({
-  optionName,
-  optionValue,
-  searchParams,
-  children,
-  ...props
-}: {
+                             optionName,
+                             optionValue,
+                             searchParams,
+                             children,
+                             ...props
+                           }: {
   optionName: string;
   optionValue: string;
   searchParams: URLSearchParams;
@@ -453,10 +459,10 @@ function ProductOptionLink({
 }
 
 function ProductDetail({
-  title,
-  content,
-  learnMore,
-}: {
+                         title,
+                         content,
+                         learnMore,
+                       }: {
   title: string;
   content: string;
   learnMore?: string;
@@ -490,7 +496,7 @@ function ProductDetail({
                   className="pb-px border-b border-primary/30 text-primary/50"
                   to={learnMore}
                 >
-                  Learn more
+                  Подробнее
                 </Link>
               </div>
             )}

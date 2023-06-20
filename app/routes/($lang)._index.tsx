@@ -3,12 +3,10 @@ import {Suspense} from 'react';
 import {Await, useLoaderData} from '@remix-run/react';
 import {
   ProductSwimlane,
-  FeaturedCollections,
-  Hero,
   ProductGridMatrix,
   BigBanner,
   SmallBanner,
-  CompanyHighlights
+  CompanyHighlights, StoreInfo
 } from '~/components';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
@@ -61,11 +59,14 @@ export async function loader({params, context}: LoaderArgs) {
         products: ProductConnection;
       }>(HOMEPAGE_FEATURED_PRODUCTS_QUERY, {
         variables: {
-          /**
-           * Country and language properties are automatically injected
-           * into all queries. Passing them is unnecessary unless you
-           * want to override them from the following default:
-           */
+          country,
+          language,
+        },
+      }),
+      newProducts: context.storefront.query<{
+        products: ProductConnection;
+      }>(HOMEPAGE_NEW_PRODUCTS_QUERY, {
+        variables: {
           country,
           language,
         },
@@ -118,6 +119,7 @@ export default function Homepage() {
     tertiaryHero,
     featuredCollections,
     featuredProducts,
+    newProducts,
   } = useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
@@ -142,9 +144,9 @@ export default function Homepage() {
           </Await>
         </div>
       </div>
-      {featuredProducts && (
+      {newProducts && (
         <Suspense>
-          <Await resolve={featuredProducts}>
+          <Await resolve={newProducts}>
             {({products}) => {
               if (!products?.nodes) return <></>;
               return (
@@ -197,32 +199,8 @@ export default function Homepage() {
         </Suspense>
       )}
 
-      {tertiaryHero && (
-        <Suspense fallback={<Hero {...skeletons[1]} />}>
-          <Await resolve={tertiaryHero}>
-            {({hero}) => {
-              if (!hero) return <></>;
-              return <Hero {...hero} />;
-            }}
-          </Await>
-        </Suspense>
-      )}
+      <StoreInfo/>
 
-      {featuredCollections && (
-        <Suspense>
-          <Await resolve={featuredCollections}>
-            {({collections}) => {
-              if (!collections?.nodes) return <></>;
-              return (
-                <FeaturedCollections
-                  collections={collections.nodes}
-                  title="ВЫБЕРИТЕ ВАШИ ЧАСЫ"
-                />
-              );
-            }}
-          </Await>
-        </Suspense>
-      )}
     </>
   );
 }
@@ -285,13 +263,26 @@ export const HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
       ${PRODUCT_CARD_FRAGMENT}
       query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
       @inContext(country: $country, language: $language) {
-      products(first: 8) {
+      products(first: 10) {
       nodes {
       ...ProductCard
     }
     }
     }
       `;
+
+export const HOMEPAGE_NEW_PRODUCTS_QUERY = `#graphql
+  ${PRODUCT_CARD_FRAGMENT}
+  query homepageNewProducts($country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    products(first: 10, sortKey: CREATED_AT, reverse: true) {
+      nodes {
+        ...ProductCard
+      }
+    }
+  }
+`;
+
 
 // @see: https://shopify.dev/api/storefront/2023-04/queries/collections
 export const FEATURED_COLLECTIONS_QUERY = `#graphql

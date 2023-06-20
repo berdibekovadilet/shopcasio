@@ -20,7 +20,7 @@ import {Layout} from '~/components';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
-import favicon from '../public/favicon.svg';
+import favicon from '../public/favicon.png';
 import {seoPayload} from '~/lib/seo.server';
 import {
   DEFAULT_LOCALE,
@@ -78,71 +78,73 @@ export default function App() {
 
   return (
     <html lang={locale.language}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Seo />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Layout
-          layout={data.layout as LayoutData}
-          key={`${locale.language}-${locale.country}`}
-        >
-          <Outlet />
-        </Layout>
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+    <head>
+      <meta charSet="utf-8"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1"/>
+      <Seo/>
+      <Meta/>
+      <Links/>
+    </head>
+    <body>
+    <Layout
+      layout={data.layout as LayoutData}
+      key={`${locale.language}-${locale.country}`}
+    >
+      <div className='max-w-[1440px] mx-auto'>
+        <Outlet/>
+      </div>
+    </Layout>
+    <ScrollRestoration/>
+    <Scripts/>
+    </body>
     </html>
   );
 }
 
-export function ErrorBoundary({error}: {error: Error}) {
+export function ErrorBoundary({error}: { error: Error }) {
   const [root] = useMatches();
   const locale = root?.data?.selectedLocale ?? DEFAULT_LOCALE;
   const routeError = useRouteError();
   const isRouteError = isRouteErrorResponse(routeError);
 
-  let title = 'Error';
-  let pageType = 'page';
+  let title = 'Ошибка';
+  let pageType = 'страницу';
 
   if (isRouteError) {
-    title = 'Not found';
+    title = 'Не найдено';
     if (routeError.status === 404) pageType = routeError.data || pageType;
   }
 
   return (
     <html lang={locale.language}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>{title}</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Layout
-          layout={root?.data?.layout}
-          key={`${locale.language}-${locale.country}`}
-        >
-          {isRouteError ? (
-            <>
-              {routeError.status === 404 ? (
-                <NotFound type={pageType} />
-              ) : (
-                <GenericError
-                  error={{message: `${routeError.status} ${routeError.data}`}}
-                />
-              )}
-            </>
+    <head>
+      <meta charSet="utf-8"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1"/>
+      <title>{title}</title>
+      <Meta/>
+      <Links/>
+    </head>
+    <body>
+    <Layout
+      layout={root?.data?.layout}
+      key={`${locale.language}-${locale.country}`}
+    >
+      {isRouteError ? (
+        <>
+          {routeError.status === 404 ? (
+            <NotFound type={pageType}/>
           ) : (
-            <GenericError error={error instanceof Error ? error : undefined} />
+            <GenericError
+              error={{message: `${routeError.status} ${routeError.data}`}}
+            />
           )}
-        </Layout>
-        <Scripts />
-      </body>
+        </>
+      ) : (
+        <GenericError error={error instanceof Error ? error : undefined}/>
+      )}
+    </Layout>
+    <Scripts/>
+    </body>
     </html>
   );
 }
@@ -356,7 +358,7 @@ const CART_QUERY = `#graphql
 export async function getCart({storefront}: AppLoadContext, cartId: string) {
   invariant(storefront, 'missing storefront client in cart query');
 
-  const {cart} = await storefront.query<{cart?: Cart}>(CART_QUERY, {
+  const {cart} = await storefront.query<{ cart?: Cart }>(CART_QUERY, {
     variables: {
       cartId,
       country: storefront.i18n.country,

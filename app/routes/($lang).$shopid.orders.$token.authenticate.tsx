@@ -24,15 +24,16 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
 export default function () {
   return null;
 }
+
 export function ErrorBoundary() {
   return (
     <PageHeader
-      heading={'Error redirecting to the order status URL'}
+      heading={'Ошибка при перенаправлении на URL-адрес статуса заказа'}
       className="text-red-600"
     >
       <div className="flex items-baseline justify-between w-full">
         <Button as="button" onClick={() => window.location.reload()}>
-          Try Again
+          Попробовать еще раз
         </Button>
       </div>
     </PageHeader>

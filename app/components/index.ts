@@ -30,6 +30,7 @@ export {Accordion} from "./Accordion"
 export {BigBanner} from "./BigBanner"
 export {SmallBanner} from "./SmallBanner"
 export {CompanyHighlights} from "./CompanyHighlights"
+export {StoreInfo} from "./StoreInfo"
 
 // Sue me
 export * from './Icon';

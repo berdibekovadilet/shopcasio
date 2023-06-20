@@ -151,7 +151,7 @@ export function FiltersDrawer({
         ) : null}
 
         <Heading as="h4" size="lead" className="pb-4">
-          Filter By
+          Фильтры
         </Heading>
         <div className="divide-y">
           {filters.map(
@@ -359,21 +359,21 @@ function filterInputToParams(
 
 export default function SortMenu() {
   const items: {label: string; key: SortParam}[] = [
-    {label: 'Featured', key: 'featured'},
+    {label: 'Популярные', key: 'featured'},
     {
-      label: 'Price: Low - High',
+      label: 'Цена: Низкая - Высокая',
       key: 'price-low-high',
     },
     {
-      label: 'Price: High - Low',
+      label: 'Цена: Высокая - Низкая',
       key: 'price-high-low',
     },
     {
-      label: 'Best Selling',
+      label: 'Топ Продаж',
       key: 'best-selling',
     },
     {
-      label: 'Newest',
+      label: 'Новинки',
       key: 'newest',
     },
   ];
@@ -385,7 +385,7 @@ export default function SortMenu() {
     <Menu as="div" className="relative z-40">
       <Menu.Button className="flex items-center">
         <span className="px-2">
-          <span className="px-2 font-medium">Sort by:</span>
+          <span className="px-2 font-medium">Сортировка:</span>
           <span>{(activeItem || items[0]).label}</span>
         </span>
         <IconCaret />

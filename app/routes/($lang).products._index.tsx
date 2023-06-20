@@ -40,13 +40,13 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
 
   const seoCollection = {
     id: 'all-products',
-    title: 'All Products',
+    title: 'Все часы',
     handle: 'products',
-    descriptionHtml: 'All the store products',
-    description: 'All the store products',
+    descriptionHtml: 'Все часы Casio',
+    description: 'Все часы Casio',
     seo: {
-      title: 'All Products',
-      description: 'All the store products',
+      title: 'Все часы',
+      description: 'Все часы Casio',
     },
     metafields: [],
     products: data.products,
@@ -76,7 +76,7 @@ export default function AllProducts() {
 
   return (
     <>
-      <PageHeader heading="All Products" variant="allCollections" />
+      <PageHeader heading="Все часы" variant="allCollections" />
       <Section>
         <Pagination connection={products}>
           {({
@@ -95,6 +95,7 @@ export default function AllProducts() {
                 key={product.id}
                 product={product}
                 loading={getImageLoadingPriority(i)}
+                quickAdd={true}
               />
             ));
 
@@ -117,7 +118,7 @@ export default function AllProducts() {
                         nodes,
                       }}
                     >
-                      {isLoading ? 'Loading...' : 'Previous'}
+                      {isLoading ? 'Загрузка...' : 'Предыдущие'}
                     </Button>
                   </div>
                 )}
@@ -140,7 +141,7 @@ export default function AllProducts() {
                         nodes,
                       }}
                     >
-                      {isLoading ? 'Loading...' : 'Next'}
+                      {isLoading ? 'Загрузка...' : 'Следующие'}
                     </Button>
                   </div>
                 )}
