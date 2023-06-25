@@ -2,7 +2,7 @@ import {companyHighlights} from "~/data/companyHighlights";
 
 export const CompanyHighlights = () => {
   return (
-    <div className="bg-slate-100 w-screen ml-[calc(50%-50vw)] mt-6 mb-16">
+    <div className="bg-slate-100 w-screen ml-[calc(50%-50vw)] mt-6 mb-16 dark:bg-contrast">
       <div className="mx-auto flex justify-between px-12 py-10 md:space-x-6 md:flex-row flex-col space-x-0">
         {companyHighlights.map((item) => (
           <div className="flex mb-6" key={item.id}>

@@ -192,7 +192,7 @@ function AppliedFilters({filters = []}: {filters: AppliedFilter[]}) {
   return (
     <>
       <Heading as="h4" size="lead" className="pb-4">
-        Applied filters
+        Примененные фильтры
       </Heading>
       <div className="flex flex-wrap gap-2">
         {filters.map((filter: AppliedFilter) => {

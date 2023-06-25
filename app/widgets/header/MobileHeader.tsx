@@ -21,8 +21,8 @@ export function MobileHeader({
       role="banner"
       className={`${
         isHome
-          ? 'bg-white-200 text-primary'
-          : 'bg-white text-primary'
+          ? 'bg-white-200 text-primary dark:bg-primary dark:text-contrast'
+          : 'bg-white text-primary dark:bg-primary dark:text-contrast'
       } flex lg:hidden items-center h-16 sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">

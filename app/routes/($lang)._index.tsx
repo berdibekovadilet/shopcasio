@@ -6,7 +6,9 @@ import {
   ProductGridMatrix,
   BigBanner,
   SmallBanner,
-  CompanyHighlights, StoreInfo
+  CompanyHighlights,
+  StoreInfo,
+  BigBannerStatic,
 } from '~/components';
 import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
@@ -35,8 +37,6 @@ export async function loader({params, context}: LoaderArgs) {
     params.lang &&
     params.lang.toLowerCase() !== `${language}-${country}`.toLowerCase()
   ) {
-    // If the lang URL param is defined, yet we still are on `EN-US`
-    // the the lang param must be invalid, send to the 404 page
     throw new Response(null, {status: 404});
   }
 
@@ -53,8 +53,6 @@ export async function loader({params, context}: LoaderArgs) {
     {
       shop,
       primaryHero: hero,
-      // These different queries are separated to illustrate how 3rd party content
-      // fetching can be optimized for both above and below the fold.
       featuredProducts: context.storefront.query<{
         products: ProductConnection;
       }>(HOMEPAGE_FEATURED_PRODUCTS_QUERY, {
@@ -117,7 +115,6 @@ export default function Homepage() {
     primaryHero,
     secondaryHero,
     tertiaryHero,
-    featuredCollections,
     featuredProducts,
     newProducts,
   } = useLoaderData<typeof loader>();
@@ -128,7 +125,7 @@ export default function Homepage() {
   return (
     <>
       <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
-        <BigBanner {...primaryHero} top loading="eager"/>
+        <BigBannerStatic/>
         <div>
           <Await resolve={secondaryHero}>
             {({hero}) => {
@@ -160,9 +157,9 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-      <div>
-        <CompanyHighlights/>
-      </div>
+
+      <CompanyHighlights/>
+
       <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
         <BigBanner {...primaryHero} top loading="eager"/>
         <div>
@@ -198,7 +195,6 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-
       <StoreInfo/>
 
     </>

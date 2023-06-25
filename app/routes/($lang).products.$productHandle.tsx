@@ -187,11 +187,6 @@ export function ProductForm() {
   const [currentSearchParams] = useSearchParams();
   const {location} = useNavigation();
 
-  /**
-   * We update `searchParams` with in-flight request data from `location` (if available)
-   * to create an optimistic UI, e.g. check the product option before the
-   * request has completed.
-   */
   const searchParams = useMemo(() => {
     return location
       ? new URLSearchParams(location.search)
@@ -200,12 +195,6 @@ export function ProductForm() {
 
   const firstVariant = product.variants.nodes[0];
 
-  /**
-   * We're making an explicit choice here to display the product options
-   * UI with a default variant, rather than wait for the user to select
-   * options first. Developers are welcome to opt-out of this behavior.
-   * By default, the first variant's options are used.
-   */
   const searchParamsWithDefaults = useMemo<URLSearchParams>(() => {
     const clonedParams = new URLSearchParams(searchParams);
 
@@ -218,11 +207,6 @@ export function ProductForm() {
     return clonedParams;
   }, [searchParams, firstVariant.selectedOptions]);
 
-  /**
-   * Likewise, we're defaulting to the first variant for purposes
-   * of add to cart if there is none returned from the loader.
-   * A developer can opt out of this, too.
-   */
   const selectedVariant = product.selectedVariant ?? firstVariant;
   const isOutOfStock = !selectedVariant?.availableForSale;
 
@@ -277,15 +261,17 @@ export function ProductForm() {
                   />
                   сом
                   {isOnSale && (
-                    <Money
-                      withoutTrailingZeros
-                      withoutCurrency
-                      data={selectedVariant?.compareAtPrice!}
-                      as="span"
-                      className="opacity-50 strike"
-                    />
-                    сом
-                    )}
+                    <>
+                      <Money
+                        withoutTrailingZeros
+                        withoutCurrency
+                        data={selectedVariant?.compareAtPrice!}
+                        as="span"
+                        className="opacity-50 strike"
+                      />
+                      сом
+                    </>
+                  )}
                 </Text>
               </AddToCartButton>
             )}
@@ -324,14 +310,6 @@ function ProductOptions({
               {option.name}
             </Heading>
             <div className="flex flex-wrap items-baseline gap-4">
-              {/**
-               * First, we render a bunch of <Link> elements for each option value.
-               * When the user clicks one of these buttons, it will hit the loader
-               * to get the new data.
-               *
-               * If there are more than 7 values, we render a dropdown.
-               * Otherwise, we just render plain links.
-               */}
               {option.values.length > 7 ? (
                 <div className="relative w-full">
                   <Listbox>

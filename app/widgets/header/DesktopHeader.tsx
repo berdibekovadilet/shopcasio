@@ -24,8 +24,8 @@ export function DesktopHeader({
         role="banner"
         className={`${
           isHome
-            ? 'bg-white-200 text-primary'
-            : 'bg-white text-primary'
+            ? 'bg-white-200 text-primary dark:bg-primary dark:text-contrast'
+            : 'bg-white text-primary dark:bg-primary dark:text-contrast'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
         } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}

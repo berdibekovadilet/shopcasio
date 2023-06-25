@@ -31,6 +31,7 @@ export {BigBanner} from "./BigBanner"
 export {SmallBanner} from "./SmallBanner"
 export {CompanyHighlights} from "./CompanyHighlights"
 export {StoreInfo} from "./StoreInfo"
+export {BigBannerStatic} from "./BigBannerStatic"
 
 // Sue me
 export * from './Icon';

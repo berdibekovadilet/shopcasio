@@ -18,8 +18,8 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
         <ul>
           <li className="mb-3"><Link to="/about">О нас</Link></li>
           <li className="mb-3"><Link to="/contact">Контакты</Link></li>
-          <li className="mb-3"><Link to="/privacy">История G-SHOCK</Link></li>
-          <li className="mb-3"><Link to="/terms">Технологии Casio</Link></li>
+          <li className="mb-3"><Link to="/history-gshock">История G-SHOCK</Link></li>
+          <li className="mb-3"><Link to="/tech-casio">Технологии Casio</Link></li>
         </ul>
       </div>
 
@@ -27,7 +27,7 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
         <h4 className='font-medium uppercase mb-4'>ПОКУПАТЕЛЯМ</h4>
         <ul>
           <li className="mb-3"><Link to="/collections">Каталог</Link></li>
-          <li className="mb-3"><Link to="/blog">Блог</Link></li>
+          <li className="mb-3"><Link to="/anniversary-40">G-SHOCK 40 ЛЕТ</Link></li>
           <li className="mb-3"><Link to="/faq">Частые вопросы</Link></li>
         </ul>
       </div>

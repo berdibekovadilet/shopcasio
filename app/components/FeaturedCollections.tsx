@@ -4,7 +4,7 @@ import {Heading, Section, Grid, Link} from '~/components';
 
 export function FeaturedCollections({
   collections,
-  title = 'Collections',
+  title = 'Коллекции',
   ...props
 }: {
   collections: Collection[];
