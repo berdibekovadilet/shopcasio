@@ -69,11 +69,31 @@ export async function loader({params, context}: LoaderArgs) {
           language,
         },
       }),
-      secondaryHero: context.storefront.query<{ hero: CollectionHero }>(
+      babygHero: context.storefront.query<{ hero: CollectionHero }>(
         COLLECTION_HERO_QUERY,
         {
           variables: {
             handle: 'baby-g',
+            country,
+            language,
+          },
+        },
+      ),
+      forhimHero: context.storefront.query<{ hero: CollectionHero }>(
+        COLLECTION_HERO_QUERY,
+        {
+          variables: {
+            handle: 'for-him',
+            country,
+            language,
+          },
+        },
+      ),
+      forherHero: context.storefront.query<{ hero: CollectionHero }>(
+        COLLECTION_HERO_QUERY,
+        {
+          variables: {
+            handle: 'for-her',
             country,
             language,
           },
@@ -113,7 +133,9 @@ export async function loader({params, context}: LoaderArgs) {
 export default function Homepage() {
   const {
     primaryHero,
-    secondaryHero,
+    babygHero,
+    forhimHero,
+    forherHero,
     tertiaryHero,
     featuredProducts,
     newProducts,
@@ -127,7 +149,7 @@ export default function Homepage() {
       <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
         <BigBannerStatic/>
         <div>
-          <Await resolve={secondaryHero}>
+          <Await resolve={babygHero}>
             {({hero}) => {
               if (!hero) return <></>;
               return <SmallBanner {...hero} />;
@@ -163,13 +185,13 @@ export default function Homepage() {
       <div className='lg:flex justify-between mt-8 px-6 md:px-8 lg:px-12 gap-8'>
         <BigBanner {...primaryHero} top loading="eager"/>
         <div>
-          <Await resolve={secondaryHero}>
+          <Await resolve={forhimHero}>
             {({hero}) => {
               if (!hero) return <></>;
               return <SmallBanner {...hero} />;
             }}
           </Await>
-          <Await resolve={tertiaryHero}>
+          <Await resolve={forherHero}>
             {({hero}) => {
               if (!hero) return <></>;
               return <SmallBanner {...hero} />;
