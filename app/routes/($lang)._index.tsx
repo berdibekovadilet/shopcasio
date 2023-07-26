@@ -79,6 +79,16 @@ export async function loader({params, context}: LoaderArgs) {
           },
         },
       ),
+      edificeHero: context.storefront.query<{ hero: CollectionHero }>(
+        COLLECTION_HERO_QUERY,
+        {
+          variables: {
+            handle: 'edifice',
+            country,
+            language,
+          },
+        },
+      ),
       forhimHero: context.storefront.query<{ hero: CollectionHero }>(
         COLLECTION_HERO_QUERY,
         {
@@ -136,7 +146,7 @@ export default function Homepage() {
     babygHero,
     forhimHero,
     forherHero,
-    tertiaryHero,
+    edificeHero,
     featuredProducts,
     newProducts,
   } = useLoaderData<typeof loader>();
@@ -155,7 +165,7 @@ export default function Homepage() {
               return <SmallBanner {...hero} />;
             }}
           </Await>
-          <Await resolve={tertiaryHero}>
+          <Await resolve={edificeHero}>
             {({hero}) => {
               if (!hero) return <></>;
               return <SmallBanner {...hero} />;
