@@ -3,7 +3,7 @@ export default function DeliveryPage() {
     <>
       <div className='container mx-auto my-8'>
         <h2 className='text-center text-2xl mb-10 md:text-4xl md:mb-16 uppercase'>Доставка</h2>
-        <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-6 dark:text-contrast'>
+        <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-6 dark:bg-zinc-800'>
           <div className='mb-8'>
             <h3 className='text-lg font-bold'>Стоимость доставки</h3>
             <ul className='mt-3'>
@@ -30,7 +30,7 @@ export default function DeliveryPage() {
       </div>
       <div className='container mx-auto my-8'>
         <h2 className='text-center text-2xl mb-10 mt-16 md:text-4xl md:mb-16 md:mt-20'>Возврат и отмена</h2>
-        <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-4 dark:text-contrast'>
+        <div className='bg-zinc-100 p-8 rounded-2xl mx-4 sm:mx-0 my-4 dark:bg-zinc-800'>
           <div className='mb-8'>
             <h3 className='text-lg font-bold'>Могу ли я вернуть или обменять товар?</h3>
             <p className='mt-3'>Да, конечно. Главное они должны будут соответствовать всем общим условиям возврата,

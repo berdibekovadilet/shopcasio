@@ -1,6 +1,7 @@
 import {Form, useParams} from "@remix-run/react";
 import {IconMenu, IconSearch, Input, Link, AccountLink, CartCount} from "~/components";
 import Logo from "~/assets/other/store_logo.png"
+import LogoDark from "~/assets/other/store_logo_dark.png"
 
 export function MobileHeader({
                                isHome,
@@ -21,8 +22,8 @@ export function MobileHeader({
       role="banner"
       className={`${
         isHome
-          ? 'bg-white-200 text-primary dark:bg-primary dark:text-contrast'
-          : 'bg-white text-primary dark:bg-primary dark:text-contrast'
+          ? 'bg-white-200 text-primary dark:bg-contrast dark:text-primary'
+          : 'bg-white text-primary dark:bg-contrast dark:text-primary'
       } flex lg:hidden items-center h-16 sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
@@ -61,7 +62,8 @@ export function MobileHeader({
         className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
         to="/"
       >
-        <img src={Logo} alt='store logo' className='py-2'/>
+        <img src={Logo} alt='store logo' className='py-2 dark:hidden'/>
+        <img src={LogoDark} alt='store logo dark' className='py-2 hidden dark:block'/>
       </Link>
 
       <div className="flex items-center justify-end w-full gap-4">

@@ -4,6 +4,7 @@ import {IconSearch, Input, Link, AccountLink, CartCount} from "~/components";
 import {EnhancedMenu} from "~/lib/utils";
 import {TopMenu} from "~/widgets/header/TopMenu";
 import Logo from "~/assets/other/store_logo.png"
+import LogoDark from "~/assets/other/store_logo_dark.png"
 
 export function DesktopHeader({
                                 isHome,
@@ -24,15 +25,16 @@ export function DesktopHeader({
         role="banner"
         className={`${
           isHome
-            ? 'bg-white-200 text-primary dark:bg-primary dark:text-contrast'
-            : 'bg-white text-primary dark:bg-primary dark:text-contrast'
+            ? 'bg-white-200 text-primary dark:bg-contrast dark:text-primary'
+            : 'bg-white text-primary dark:bg-contrast dark:text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
         } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
         <div className="flex gap-12 items-center">
           <Link to="/" prefetch="intent">
-            <img src={Logo} alt='store logo' className='h-12'/>
+            <img src={Logo} alt='store logo' className='h-12 dark:hidden'/>
+            <img src={LogoDark} alt='store logo dark' className='h-12 hidden dark:block'/>
           </Link>
           <nav className="flex gap-8 text-sm break-normal">
             {/* Top level menu items */}
