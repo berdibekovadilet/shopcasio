@@ -34,10 +34,10 @@ export function DesktopHeader({
         } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
         <div className="flex gap-12 items-center">
-          <Link to="/" prefetch="intent">
+          <a href="/">
             <img src={Logo} alt='store logo' className='h-12 dark:hidden'/>
             <img src={LogoDark} alt='store logo dark' className='h-12 hidden dark:block'/>
-          </Link>
+          </a>
           <nav className="flex gap-8 text-sm break-normal">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (

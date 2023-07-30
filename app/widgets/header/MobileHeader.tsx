@@ -1,5 +1,5 @@
 import {Form, useParams} from "@remix-run/react";
-import {IconMenu, IconSearch, Input, Link, AccountLink, CartCount} from "~/components";
+import {IconMenu, IconSearch, Input, AccountLink, CartCount} from "~/components";
 import Logo from "~/assets/other/store_logo.png"
 import LogoDark from "~/assets/other/store_logo_dark.png"
 
@@ -58,13 +58,13 @@ export function MobileHeader({
         </Form>
       </div>
 
-      <Link
+      <a
         className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
-        to="/"
+        href="/"
       >
         <img src={Logo} alt='store logo' className='py-2 dark:hidden'/>
         <img src={LogoDark} alt='store logo dark' className='py-2 hidden dark:block'/>
-      </Link>
+      </a>
 
       <div className="flex items-center justify-end w-full gap-4">
         <AccountLink className="relative flex items-center justify-center w-8 h-8"/>
