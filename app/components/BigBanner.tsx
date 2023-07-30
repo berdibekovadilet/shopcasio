@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import type {SerializeFrom} from '@shopify/remix-oxygen';
 import {MediaFile} from '@shopify/hydrogen';
 import type {
@@ -29,11 +28,9 @@ export function BigBanner({
                             cta,
                             handle,
                             heading,
-                            height,
                             loading,
                             spread,
                             spreadSecondary,
-                            top,
                           }: SerializeFrom<CollectionHero>) {
   return (
     <Link to={`/collections/${handle}`}>
@@ -52,7 +49,7 @@ export function BigBanner({
             <div
               className="absolute left-6 top-8 rounded-md flex flex-col items-baseline justify-between gap-3 px-3 py-4 sm:px-4 md:px-6 bg-gradient-to-b dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast">
               {heading?.value && (
-                <Heading format as="h2" size="display" className="max-w-md text-3xl">
+                <Heading className="max-w-md text-3xl">
                   {heading.value}
                 </Heading>
               )}
