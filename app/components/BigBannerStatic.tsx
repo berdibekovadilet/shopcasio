@@ -10,9 +10,9 @@ export const BigBannerStatic = () => {
         <div
           className='absolute left-6 top-8 rounded-md flex flex-col items-baseline justify-between gap-3 px-3 py-4 sm:px-4 md:px-6 bg-gradient-to-b dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast'>
           <h2 className="max-w-md text-3xl font-medium">
-            G-SHOCK
+            40-летний юбилей
           </h2>
-          <p className='text-xl font-medium'>40-летний юбилей</p>
+          {/*<p className='text-xl font-medium'>40-летний юбилей</p>*/}
         </div>
       </div>
     </Link>
