@@ -1,5 +1,7 @@
 import {EnhancedMenu} from "~/lib/utils";
 import {Drawer, Link, Text} from "~/components";
+import Logo40 from "~/assets/other/Logo_40.svg"
+import Logo40Dark from "~/assets/other/Logo_40_dark.svg"
 
 export function MenuDrawer({
                              isOpen,
@@ -45,6 +47,10 @@ function MenuMobileNav({
           </Link>
         </span>
       ))}
+      <Link to="/anniversary-40" prefetch="intent">
+        <img src={Logo40} alt='store logo' className='h-12 dark:hidden'/>
+        <img src={Logo40Dark} alt='store logo dark' className='h-12 hidden dark:block'/>
+      </Link>
     </nav>
   );
 }
