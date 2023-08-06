@@ -1,3 +1,4 @@
+import {useEffect, useRef} from "react";
 import {
   defer,
   type LinksFunction,
@@ -11,7 +12,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
+  useLoaderData, useLocation,
   useMatches,
   useRouteError,
 } from '@remix-run/react';
@@ -31,6 +32,7 @@ import {
 import invariant from 'tiny-invariant';
 import {Shop, Cart} from '@shopify/hydrogen/storefront-api-types';
 import {useAnalytics} from './hooks/useAnalytics';
+import * as gtag from "~/lib/gtags.client";
 
 export const links: LinksFunction = () => {
   return [
@@ -64,17 +66,28 @@ export async function loader({request, context}: LoaderArgs) {
     analytics: {
       shopifySalesChannel: ShopifySalesChannel.hydrogen,
       shopId: layout.shop.id,
+      gaTrackingId: 'G-9RMJG4TX22',
     },
     seo,
   });
 }
 
 export default function App() {
+  const location = useLocation();
+  const lastLocationKey = useRef<string>('');
   const data = useLoaderData<typeof loader>();
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
   const hasUserConsent = true;
-
   useAnalytics(hasUserConsent, locale);
+
+  useEffect(() => {
+    if (lastLocationKey.current === location.key) return;
+    lastLocationKey.current = location.key;
+
+    if (data.analytics.gaTrackingId) {
+      gtag.pageview(location.pathname, data.analytics.gaTrackingId);
+    }
+  }, [location, data.analytics.gaTrackingId]);
 
   return (
     <html lang={locale.language}>
