@@ -98,13 +98,15 @@ export default function App() {
       <Meta/>
       <Links/>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RMJG4TX22"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      <script dangerouslySetInnerHTML={{
+        __html: `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RMJG4TX22');
+  `
+      }}></script>
 
-        gtag('config', 'G-9RMJG4TX22');
-      </script>
     </head>
     <body>
     <Layout
