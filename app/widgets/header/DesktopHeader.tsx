@@ -38,7 +38,7 @@ export function DesktopHeader({
             <img src={Logo} alt='store logo' className='h-12 dark:hidden'/>
             <img src={LogoDark} alt='store logo dark' className='h-12 hidden dark:block'/>
           </a>
-          <nav className="flex gap-8 text-sm break-normal">
+          <nav className="flex gap-8 text-sm break-normal uppercase">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
               <Link

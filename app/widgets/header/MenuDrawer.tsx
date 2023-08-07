@@ -13,7 +13,7 @@ export function MenuDrawer({
   menu: EnhancedMenu;
 }) {
   return (
-    <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Меню">
+    <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="МЕНЮ">
       <div className="grid">
         <MenuMobileNav menu={menu} onClose={onClose}/>
       </div>
@@ -29,7 +29,7 @@ function MenuMobileNav({
   onClose: () => void;
 }) {
   return (
-    <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
+    <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 uppercase">
       {/* Top level menu items */}
       {(menu?.items || []).map((item) => (
         <span key={item.id} className="block">
