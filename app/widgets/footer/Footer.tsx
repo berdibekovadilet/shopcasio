@@ -27,6 +27,7 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
         <h4 className='font-medium uppercase mb-4'>ПОКУПАТЕЛЯМ</h4>
         <ul>
           <li className="mb-3"><Link to="/collections">Каталог</Link></li>
+          <li className="mb-3"><Link to="/anniversary-50-casio">CASIO 50 ЛЕТ</Link></li>
           <li className="mb-3"><Link to="/anniversary-40">G-SHOCK 40 ЛЕТ</Link></li>
           <li className="mb-3"><Link to="/faq">Частые вопросы</Link></li>
         </ul>

@@ -3,7 +3,7 @@ import Banner from "~/assets/banners/casio50anniversary.png"
 
 export const BigBannerStatic = () => {
   return (
-    <Link to="https://www.instagram.com/casio_kyrgyzstan/">
+    <Link to="/anniversary-50-casio">
       <div
         className='relative overflow-hidden inline-block md:min-w-[700px] h-[531px] transition-all duration-[0.2s] ease-[ease] mb-6 hover:scale-[1.02] rounded-[20px]'>
         <img src={Banner} alt="Banner" className='w-full h-full object-cover'/>
