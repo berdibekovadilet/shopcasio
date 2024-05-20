@@ -47,7 +47,7 @@ function MenuMobileNav({
           </Link>
         </span>
       ))}
-      <Link to="/anniversary-40" prefetch="intent" onClick={onClose}>
+      <Link to="/anniversary-50-casio" prefetch="intent" onClick={onClose}>
         <img src={Logo50} alt='store logo' className='h-12 dark:hidden'/>
         <img src={Logo50Dark} alt='store logo dark' className='h-12 hidden dark:block'/>
       </Link>
