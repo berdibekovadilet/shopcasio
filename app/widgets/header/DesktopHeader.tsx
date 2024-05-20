@@ -5,8 +5,8 @@ import {EnhancedMenu} from "~/lib/utils";
 import {TopMenu} from "~/widgets/header/TopMenu";
 import Logo from "~/assets/other/store_logo.png"
 import LogoDark from "~/assets/other/store_logo_dark.png"
-import Logo40 from "~/assets/other/Logo_40.svg"
-import Logo40Dark from "~/assets/other/Logo_40_dark.svg"
+import Logo50 from "~/assets/other/Logo_50.svg"
+import Logo50Dark from "~/assets/other/Logo_50_dark.svg"
 
 export function DesktopHeader({
                                 isHome,
@@ -54,9 +54,9 @@ export function DesktopHeader({
               </Link>
             ))}
           </nav>
-          <Link to="/anniversary-40" prefetch="intent">
-            <img src={Logo40} alt='store logo' className='h-12 dark:hidden'/>
-            <img src={Logo40Dark} alt='store logo dark' className='h-12 hidden dark:block'/>
+          <Link to="/anniversary-50-casio" prefetch="intent">
+            <img src={Logo50} alt='store logo' className='h-12 dark:hidden'/>
+            <img src={Logo50Dark} alt='store logo dark' className='h-12 hidden dark:block'/>
           </Link>
         </div>
         <div className="flex items-center gap-1">
