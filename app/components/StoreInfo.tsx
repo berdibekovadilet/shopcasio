@@ -1,4 +1,4 @@
-import StoreImage from "~/assets/pages/storelocation.png"
+import StoreImage from "~/assets/pages/storelocation.jpg"
 
 export const StoreInfo = () => {
   return (
