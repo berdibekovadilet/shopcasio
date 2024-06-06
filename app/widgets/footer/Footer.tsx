@@ -45,13 +45,23 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
       <div>
         <h4 className='font-medium uppercase mb-4'>СВЯЖИТЕСЬ С НАМИ</h4>
         <ul>
-          <li className="mb-3"><a href="tel:+996551377373" target='_blank' rel="noopener noreferrer">+996 (551)
-            37-73-73</a></li>
-          <li className="mb-3"><a href="https://go.2gis.com/pfbyr2" target='_blank' rel="noopener noreferrer">Адрес: ТЦ
-            Евразия 2 этаж</a></li>
-          <li className="mb-3">График работы: 10:00 - 22:00</li>
           <li className="mb-3"><a href="https://www.instagram.com/casio_kyrgyzstan/" target='_blank'
                                   rel="noopener noreferrer">Instagram</a></li>
+          <li className="mb-5"><a href="tel:+996551377373" target='_blank' rel="noopener noreferrer">+996 (551)
+            37-73-73</a></li>
+          <p className="mb-3">Адреса магазинов:</p>
+          <li className="mb-2"><a href="https://go.2gis.com/pfbyr2" target='_blank' rel="noopener noreferrer">Сasio
+            Store в ТЦ
+            Евразия 2 этаж</a></li>
+          <li className="mb-2"><a href="https://go.2gis.com/wx01n" target='_blank' rel="noopener noreferrer">Casio
+            Store в ТЦ
+            Дордой Плаза 2 этаж</a></li>
+          <li className="mb-2"><a href="https://go.2gis.com/kk2jz" target='_blank' rel="noopener noreferrer">Casio
+            Store в ТЦ
+            АзияМолл 1 этаж</a></li>
+          <li className="mb-2"><a href="https://go.2gis.com/uadnpf" target='_blank' rel="noopener noreferrer">G-Factory
+            в ТЦ
+            ЦУМ 3 этаж</a></li>
         </ul>
       </div>
 
