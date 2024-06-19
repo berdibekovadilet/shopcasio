@@ -73,7 +73,7 @@ export async function loader({params, context}: LoaderArgs) {
         COLLECTION_HERO_QUERY,
         {
           variables: {
-            handle: 'baby-g',
+            handle: 'graduation',
             country,
             language,
           },
