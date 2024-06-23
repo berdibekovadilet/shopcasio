@@ -83,7 +83,7 @@ export async function loader({params, context}: LoaderArgs) {
         COLLECTION_HERO_QUERY,
         {
           variables: {
-            handle: 'edifice',
+            handle: 'new-arrive',
             country,
             language,
           },
