@@ -1,4 +1,4 @@
-import StoreImage from "~/assets/pages/storelocation.jpg"
+import StoreImage from "~/assets/pages/stores-collage.png"
 
 export const StoreInfo = () => {
   return (
@@ -7,8 +7,8 @@ export const StoreInfo = () => {
         <img src={StoreImage} alt="Store Image" className="w-full h-full md:h-[500px] object-cover rounded-xl"/>
       </div>
       <div className="max-w-md mt-6">
-        <h2 className="uppercase text-4xl mb-6">Наш Магазин</h2>
-        <h3 className="mb-6">Мы находимся в ТЦ Евразия, 2 этаж</h3>
+        <h2 className="uppercase text-4xl mb-6">Наши Магазины</h2>
+        <h3 className="mb-6">Мы находимся в ТЦ Евразия 2 этаж, ТЦ Дордой Плаза 2 этаж, ТЦ АзияМолл 1 этаж и ЦУМ 3 этаж</h3>
         <h4 className="mt-5">
           Приходите в наш магазин и делайте покупки с комфортом: наши
           консультанты – настоящие эксперты в своем деле и всегда помогут

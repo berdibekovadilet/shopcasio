@@ -47,8 +47,7 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
         <ul>
           <li className="mb-3"><a href="https://www.instagram.com/casio_kyrgyzstan/" target='_blank'
                                   rel="noopener noreferrer">Instagram</a></li>
-          <li className="mb-5"><a href="tel:+996551377373" target='_blank' rel="noopener noreferrer">+996 (551)
-            37-73-73</a></li>
+          <li className="mb-5"><a href="tel:+996503500071" target='_blank' rel="noopener noreferrer">+996 (503) 50-00-71</a></li>
           <p className="mb-3">Адреса магазинов:</p>
           <li className="mb-2"><a href="https://go.2gis.com/pfbyr2" target='_blank' rel="noopener noreferrer">Сasio
             Store в ТЦ
