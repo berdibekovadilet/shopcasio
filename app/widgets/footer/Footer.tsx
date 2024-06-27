@@ -46,7 +46,7 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
         <h4 className='font-medium uppercase mb-4'>СВЯЖИТЕСЬ С НАМИ</h4>
         <ul>
           <li className="mb-3"><a href="https://www.instagram.com/casio_kyrgyzstan/" target='_blank'
-                                  rel="noopener noreferrer">Instagram</a></li>
+                                  rel="noopener noreferrer">Instagram: casio_kyrgyzstan</a></li>
           <li className="mb-5"><a href="tel:+996503500071" target='_blank' rel="noopener noreferrer">+996 (503) 50-00-71</a></li>
           <p className="mb-3">Адреса магазинов:</p>
           <li className="mb-2"><a href="https://go.2gis.com/pfbyr2" target='_blank' rel="noopener noreferrer">Сasio
@@ -57,7 +57,7 @@ export const Footer = ({menu}: { menu?: EnhancedMenu }) => {
             Дордой Плаза 2 этаж</a></li>
           <li className="mb-2"><a href="https://go.2gis.com/kk2jz" target='_blank' rel="noopener noreferrer">Casio
             Store в ТЦ
-            АзияМолл 1 этаж</a></li>
+            Азия Молл 1 этаж</a></li>
           <li className="mb-2"><a href="https://go.2gis.com/uadnpf" target='_blank' rel="noopener noreferrer">G-Factory
             в ТЦ
             ЦУМ 3 этаж</a></li>
