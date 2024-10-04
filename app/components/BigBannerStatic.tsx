@@ -1,6 +1,5 @@
 import {Link} from '~/components/Link';
-// import Banner from "~/assets/banners/casio50anniversary.png"
-import Banner from '~/assets/banners/casio-event2.png';
+import Banner from '~/assets/banners/casio50anniversary.png';
 
 export const BigBannerStatic = () => {
   return (
