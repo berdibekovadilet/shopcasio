@@ -12,18 +12,16 @@ export default function Anniversary() {
       </h1>
       <div className="mt-8">
         <p className="mb-3">
-          G-SHOCK воплощают в себе приверженность Casio к кампаниям с розовой
-          лентой, которые повышают осведомленность о важности раннего выявления,
-          диагностики и лечения рака молочной железы. G-SHOCK и Pink Ribbon -
-          естественные союзники, разделяющие стремление построить мир, где
-          каждый может быть здоров, свободен быть самим собой и никогда не
-          упускать возможности по причине болезни.
+          Часы серии G-SHOCK Pink Ribbon отражают важность осведомленности и
+          борьбы с раком молочной железы. Это сотрудничество направлено на
+          привлечение внимания к важности раннего выявления и своевременного
+          лечения.
         </p>
         <p className="mb-3 mt-8">
-          Чтобы присоединиться к G-SHOCK и принять участие в движении, следите
-          за кампаниями по сбору средств и мероприятиями по всему миру в течение
-          «Розового октября» - месяца осведомленности о раке груди, когда
-          розовая ленточка выходит на улицы в полную силу.
+          Casio и Pink Ribbon объединяют усилия для создания мира, где здоровье
+          и свобода самовыражения — неотъемлемые права каждого человека. Этот
+          проект призван напомнить, что даже самые маленькие шаги в сторону
+          заботы о своем здоровье могут спасти жизнь.
         </p>
       </div>
       <div className="my-8">
@@ -41,7 +39,7 @@ export default function Anniversary() {
       </p>
       <div className="flex flex-col md:flex-row justify-between gap-16">
         <div className="md:w-1/2">
-          <Link to="https://shopcasio.bstarco.kg/products/g-shock-gma-s2100ga-7a">
+          <Link to="https://shopcasio.bstarco.kg/products/g-shock-dw-5600pk-1">
             <h2 className="text-2xl font-medium mb-3">DW-5600PK-1</h2>
             <img
               src={Model1}
@@ -55,7 +53,7 @@ export default function Anniversary() {
           </Link>
         </div>
         <div className="md:w-1/2">
-          <Link to="https://shopcasio.bstarco.kg/products/g-shock-gma-s2100ga-7a">
+          <Link to="https://shopcasio.bstarco.kg/products/g-shock-gmd-s5610pk-4">
             <h2 className="text-2xl font-medium mb-3">GMD-S5610PK-4</h2>
             <img
               src={Model2}
