@@ -73,16 +73,25 @@ export const Footer = ({menu}: {menu?: EnhancedMenu}) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram: casio_kyrgyzstan
+              Instagram: <br /> casio_kyrgyzstan
             </a>
           </li>
-          <li className="mb-5">
+          {/* <li className="mb-5">
             <a
-              href="tel:+996503500071"
+              href="tel:+996555550035"
               target="_blank"
               rel="noopener noreferrer"
             >
-              +996 (503) 50-00-71
+              тел: +996 (555) 550 035
+            </a>
+          </li> */}
+          <li className="mb-5">
+            <a
+              href="https://wa.me/+996555550035"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              написать в whatsapp: <br /> +996 (555) 550 035
             </a>
           </li>
           <p className="mb-3">Адреса магазинов:</p>
