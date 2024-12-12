@@ -54,10 +54,6 @@ export function DesktopHeader({
               </Link>
             ))}
           </nav>
-          <Link to="/anniversary-50-casio" prefetch="intent">
-            <img src={Logo50} alt='store logo' className='h-12 dark:hidden'/>
-            <img src={Logo50Dark} alt='store logo dark' className='h-12 hidden dark:block'/>
-          </Link>
         </div>
         <div className="flex items-center gap-1">
           <Form
