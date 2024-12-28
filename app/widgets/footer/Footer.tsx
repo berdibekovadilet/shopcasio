@@ -97,6 +97,15 @@ export const Footer = ({menu}: {menu?: EnhancedMenu}) => {
           <p className="mb-3">Адреса магазинов:</p>
           <li className="mb-2">
             <a
+              href="https://go.2gis.com/kk2jz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Casio Store в ТЦ Азия Молл 1 этаж
+            </a>
+          </li>
+          <li className="mb-2">
+            <a
               href="https://go.2gis.com/pfbyr2"
               target="_blank"
               rel="noopener noreferrer"
@@ -111,15 +120,6 @@ export const Footer = ({menu}: {menu?: EnhancedMenu}) => {
               rel="noopener noreferrer"
             >
               Casio Store в ТЦ Дордой Плаза 2 этаж
-            </a>
-          </li>
-          <li className="mb-2">
-            <a
-              href="https://go.2gis.com/kk2jz"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Casio Store в ТЦ Азия Молл 1 этаж
             </a>
           </li>
           <li className="mb-2">
