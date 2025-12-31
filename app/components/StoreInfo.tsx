@@ -32,5 +32,48 @@ export const StoreInfo = () => {
         </h4>
       </div>
     </div>
+
+     {/* ===== Подписка ===== */}
+     <div className="max-w-2xl mx-auto text-center">
+     <h3 className="uppercase text-2xl tracking-widest mb-8">
+       Подпишитесь на нашу рассылку
+     </h3>
+
+     <Form method="post" className="flex flex-col sm:flex-row gap-4 justify-center">
+       <input
+         type="email"
+         name="email"
+         placeholder="Email"
+         required
+         className="border border-gray-300 px-4 py-3 w-full sm:w-[360px] focus:outline-none"
+       />
+
+       <button
+         type="submit"
+         disabled={isSubmitting}
+         className="bg-black text-white px-8 py-3 uppercase tracking-wide hover:opacity-90 transition"
+       >
+         {isSubmitting ? "Отправка..." : "Подписаться"}
+       </button>
+     </Form>
+
+     {/* Сообщения */}
+     {actionData?.success && (
+       <p className="text-green-600 mt-4">
+         Спасибо! Вы успешно подписались на рассылку.
+       </p>
+     )}
+
+     {actionData?.error && (
+       <p className="text-red-600 mt-4">{actionData.error}</p>
+     )}
+
+     <p className="text-sm text-gray-500 mt-4">
+       Нажимая на кнопку «Подписаться», вы соглашаетесь с{" "}
+       <a href="/privacy-policy" className="underline">
+         политикой конфиденциальности
+       </a>
+     </p>
+   </div>
   );
 };
