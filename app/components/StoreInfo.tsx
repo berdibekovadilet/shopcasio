@@ -80,13 +80,9 @@ export const StoreInfo = () => {
           </p>
         )}
 
-        {actionData?.error && (
-          <p className="text-red-600 mt-4">{actionData.error}</p>
-        )}
-
         <p className="text-sm text-gray-500 mt-4">
           Нажимая на кнопку «Подписаться», вы соглашаетесь с{" "}
-          <a href="/privacy-policy" className="underline">
+          <a href="/privacy" className="underline">
             политикой конфиденциальности
           </a>
         </p>
