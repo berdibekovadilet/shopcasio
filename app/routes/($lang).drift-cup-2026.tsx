@@ -22,7 +22,7 @@ const GALLERY_IMAGES = [
   {src: Image2, alt: 'Drift Cup 2026 — дрифт-соревнования'},
   {src: Image3, alt: 'Drift Cup 2026 — атмосфера motorsport'},
   {src: Image4, alt: 'Drift Cup 2026 — зрители и участники'},
-  {src: Image5, alt: 'Drift Cup 2026 — ShopCasio на площадке'},
+  {src: Image5, alt: 'Drift Cup 2026 — Casio на площадке'},
   {src: Image6, alt: 'Casio Edifice на Drift Cup 2026'},
   {src: Image7, alt: 'Drift Cup 2026 — скорость и точность'},
   {src: Image8, alt: 'Drift Cup 2026 — финал события'},
@@ -62,7 +62,7 @@ export const meta = () => {
   return [
     {
       title:
-        'Drift Cup 2026 — ShopCasio и Casio Edifice на главном дрифт-событии',
+        'Drift Cup 2026 — Casio Edifice на главном дрифт-событии',
     },
     {
       name: 'description',
@@ -81,14 +81,14 @@ export default function DriftCup2026Page() {
           точность и энергия Edifice
         </h1>
         <p className="mt-4 text-lg text-neutral-600">
-          ShopCasio и Casio Edifice на главном дрифт-событии сезона
+          Casio Edifice на главном дрифт-событии сезона
         </p>
       </div>
 
       <div className="my-8">
         <img
           src={HeroImage}
-          alt="Drift Cup 2026 — ShopCasio и Casio Edifice"
+          alt="Drift Cup 2026 — Casio и Casio Edifice"
           className="border-black md:border-[20px] border-[6px] w-full max-h-[650px] object-cover"
         />
       </div>
