@@ -111,7 +111,20 @@ function shopSitemap({
       };
     });
 
-  const urlsDatas = [...productsData, ...collectionsData, ...pagesData];
+  const staticRoutes = [
+    {
+      url: `${baseUrl}/drift-cup-2026`,
+      lastMod: new Date().toISOString(),
+      changeFreq: 'monthly',
+    },
+  ];
+
+  const urlsDatas = [
+    ...productsData,
+    ...collectionsData,
+    ...pagesData,
+    ...staticRoutes,
+  ];
 
   return `
     <urlset
