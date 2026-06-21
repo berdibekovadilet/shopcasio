@@ -58,11 +58,18 @@ export async function loader({request}: LoaderArgs) {
   );
 }
 
-export const meta: MetaFunction<typeof loader> = ({data}) => {
-  return {
-    title: data?.seo?.title ?? SEO_TITLE,
-    description: data?.seo?.description ?? SEO_DESCRIPTION,
-  };
+export const meta = () => {
+  return [
+    {
+      title:
+        'Drift Cup 2026 — ShopCasio и Casio Edifice на главном дрифт-событии',
+    },
+    {
+      name: 'description',
+      content:
+        'ShopCasio выступил спонсором Drift Cup 2026 с часами Casio Edifice — брендом, вдохновленным скоростью, точностью и миром motorsport.',
+    },
+  ];
 };
 
 export default function DriftCup2026Page() {
