@@ -1,10 +1,10 @@
 import {json, type LoaderArgs, type MetaFunction} from '@shopify/remix-oxygen';
 import {Link} from '~/components';
 import {routeHeaders, CACHE_LONG} from '~/data/cache';
-import HeroImage from '~/assets/articles/drift-cup/1.jpeg';
+import HeroImage from '~/assets/articles/drift-cup/4.jpeg';
 import Image2 from '~/assets/articles/drift-cup/2.jpeg';
 import Image3 from '~/assets/articles/drift-cup/3.jpeg';
-import Image4 from '~/assets/articles/drift-cup/4.jpeg';
+import Image4 from '~/assets/articles/drift-cup/1.jpeg';
 import Image5 from '~/assets/articles/drift-cup/5.jpeg';
 import Image6 from '~/assets/articles/drift-cup/6.jpeg';
 import Image7 from '~/assets/articles/drift-cup/7.jpeg';
@@ -67,7 +67,7 @@ export const meta = () => {
     {
       name: 'description',
       content:
-        'ShopCasio выступил спонсором Drift Cup 2026 с часами Casio Edifice — брендом, вдохновленным скоростью, точностью и миром motorsport.',
+        'Casio выступил спонсором Drift Cup 2026 с часами Casio Edifice — брендом, вдохновленным скоростью, точностью и миром motorsport.',
     },
   ];
 };
