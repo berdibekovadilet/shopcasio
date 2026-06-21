@@ -1,5 +1,5 @@
 import {Link} from '~/components/Link';
-import Banner from '~/assets/articles/drift-cup/8.jpeg';
+import Banner from '~/assets/articles/drift-cup/1.jpeg';
 
 export const BigBannerStatic = () => {
   return (

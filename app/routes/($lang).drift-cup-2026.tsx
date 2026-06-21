@@ -11,14 +11,14 @@ import Image7 from '~/assets/articles/drift-cup/7.jpeg';
 import Image8 from '~/assets/articles/drift-cup/8.jpeg';
 
 const SEO_TITLE =
-  'Drift Cup 2026 — ShopCasio и Casio Edifice на главном дрифт-событии';
+  'Drift Cup 2026 — Casio Edifice на главном дрифт-событии';
 const SEO_DESCRIPTION =
-  'ShopCasio выступил спонсором Drift Cup 2026 с часами Casio Edifice — брендом, вдохновленным скоростью, точностью и миром motorsport.';
+  'CASIO выступил спонсором Drift Cup 2026 с часами Edifice — брендом, вдохновленным скоростью, точностью и миром motorsport.';
 
 const EDIFICE_COLLECTION_URL = '/collections/edifice';
 
 const GALLERY_IMAGES = [
-  {src: HeroImage, alt: 'Drift Cup 2026 — ShopCasio и Casio Edifice'},
+  {src: HeroImage, alt: 'Drift Cup 2026 — Casio Edifice'},
   {src: Image2, alt: 'Drift Cup 2026 — дрифт-соревнования'},
   {src: Image3, alt: 'Drift Cup 2026 — атмосфера motorsport'},
   {src: Image4, alt: 'Drift Cup 2026 — зрители и участники'},
@@ -104,11 +104,11 @@ export default function DriftCup2026Page() {
 
       <div className="mt-12">
         <h2 className="text-2xl font-medium mb-3">
-          ShopCasio — спонсор Drift Cup 2026
+          Edifice — спонсор Drift Cup 2026
         </h2>
         <p className="mb-3">
-          ShopCasio принял участие в Drift Cup 2026 в качестве спонсора,
-          представив часы Casio Edifice — линейку, которая идеально сочетается с
+          Casio принял участие в Drift Cup 2026 в качестве спонсора,
+          представив часы Edifice — линейку, которая идеально сочетается с
           духом автоспорта. Edifice ассоциируется с точностью, динамикой,
           технологичностью и мужским стилем, поэтому участие бренда в
           дрифт-событии стало естественным продолжением его характера.
@@ -155,15 +155,15 @@ export default function DriftCup2026Page() {
 
       <div className="mt-16 p-6 md:p-10 bg-neutral-100 dark:bg-neutral-900 rounded-2xl text-center">
         <h2 className="text-2xl md:text-3xl font-medium mb-4">
-          Casio Edifice — часы в ритме motorsport
+          Edifice — часы в ритме motorsport
         </h2>
         <p className="mb-8 max-w-2xl mx-auto">
-          Откройте коллекцию Casio Edifice в ShopCasio и выберите часы, созданные
+          Откройте коллекцию Edifice и выберите часы, созданные
           для динамичного ритма жизни.
         </p>
         <Link to={EDIFICE_COLLECTION_URL}>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">
-            Смотреть Casio Edifice
+            Смотреть Edifice
           </button>
         </Link>
       </div>
